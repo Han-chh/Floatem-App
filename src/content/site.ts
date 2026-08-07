@@ -15,7 +15,7 @@ export const release = {
   ],
 }
 
-export const support = { email: 'support@floatem.app' }
+export const support = { email: 'floatemapp@outlook.com' }
 
 export const themes = [
   { id: 'classic', zh: '经典色', en: 'Classic', color: '#e59a6d', deep: '#39241c', image: '/images/01-经典色.png' },
