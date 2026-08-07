@@ -14,6 +14,7 @@ img { display: block; max-width: 100%; }
 .site-header::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(#211e1a62, transparent); opacity: .6; pointer-events: none; }
 .brand { background: none; color: inherit; display: flex; gap: 9px; align-items: center; padding: 8px 0; font-size: 22px; letter-spacing: -.06em; }
 .brand img { width: 27px; height: 27px; }
+.app-icon { border-radius: 22.5%; clip-path: inset(0 round 22.5%); object-fit: cover; }
 .site-header nav { display: flex; gap: 26px; margin-left: auto; margin-right: 26px; }
 .site-header nav button, .language { background: none; color: inherit; padding: 7px 0; font-size: 12px; letter-spacing: .08em; opacity: .78; transition: opacity .2s ease; }
 .site-header nav button:hover, .site-header nav button.active, .language:hover { opacity: 1; }
