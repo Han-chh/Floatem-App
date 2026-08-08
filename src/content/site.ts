@@ -27,6 +27,7 @@ export const themes = [
 ]
 
 export const screenshots = {
+  homeHero: '/images/home-hero-floatem-workspaces.png',
   video: '/images/07-悬浮主窗口-视频工作.png',
   code: '/images/08-多卡片悬浮-代码工作.png',
   desktop: '/images/09-桌面固定-彩色便签.png',

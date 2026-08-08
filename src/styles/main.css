@@ -115,3 +115,13 @@ footer { display: flex; align-items: flex-end; justify-content: space-between; g
 .quiet-cta p { max-width: none; font-family: "Cormorant Garamond", "Noto Serif SC", serif; font-size: clamp(27px, 3vw, 42px); font-style: italic; letter-spacing: -.045em; }
 @media (max-width: 760px) { .quiet-cta { margin: 0; padding: 28px 6vw 23px; display: flex; gap: 18px; }.quiet-cta p { font-size: 25px; line-height: 1.12; }.quiet-cta .button { flex: none; padding: 11px 13px; } }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; } }
+
+/* Home hero: reserve a calm, high-contrast reading area without losing the watercolor artwork. */
+.hero { color: #fffaf2; }
+.hero::before { background: linear-gradient(90deg, #13271fe8 0%, #1c332acb 37%, #29403167 58%, #29403100 78%), url("/images/floatem-watercolor-botanical.png") center / cover; }
+.hero::after { background: transparent; }
+.hero .eyebrow, .hero h1, .hero h1 small, .hero-body, .hero .inline-link, .hero-release, .floating-caption { color: #fffaf2; }
+.hero h1 { text-shadow: 0 2px 14px #101b16d9, 0 1px 1px #101b16e6; }
+.hero .eyebrow, .hero-body, .hero .inline-link, .hero-release, .floating-caption { text-shadow: 0 1px 7px #101b16d0; }
+.hero-body { opacity: .96; }
+.hero .inline-link { border-color: #fffaf2a6; }

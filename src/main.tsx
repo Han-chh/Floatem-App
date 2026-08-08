@@ -78,7 +78,7 @@ function Home({ t, locale, go }: { t: Translation, locale: Locale, go: (page: Pa
       <div className="hero-noise" />
       <div className="hero-copy"><p className="eyebrow">{t.home.eyebrow}</p><h1><small>Floatem</small>{t.home.title.map((line) => <span key={line}>{line}</span>)}</h1><p className="hero-body">{t.home.body}</p><div className="hero-actions"><button className="button filled" onClick={() => go('download')}>{t.common.get}<Arrow /></button><button className="inline-link" onClick={() => go('features')}>{t.common.explore}<Arrow /></button></div></div>
       <div className="hero-art" aria-label={locale === 'zh' ? 'Floatem 应用界面示意' : 'Floatem application interface'}>
-        <div className="hero-screenshot"><img src={`.${screenshots.appStore.notes}`} alt={locale === 'zh' ? 'Floatem 笔记界面' : 'Floatem notes interface'} /></div>
+        <div className="hero-screenshot"><img src={`.${screenshots.homeHero}`} alt={locale === 'zh' ? 'Floatem 在代码、视频与桌面工作场景中的悬浮卡片' : 'Floatem floating cards across code, video, and desktop work'} /></div>
         <div className="floating-caption">{t.home.note}</div>
       </div>
       <div className="hero-release"><span>{t.common.latest}</span><b>v{release.version}</b><i>↓</i></div>
