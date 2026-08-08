@@ -95,6 +95,11 @@ footer { display: flex; align-items: flex-end; justify-content: space-between; g
 .page-intro h1 + p { color: #fff9ef; opacity: .92; text-shadow: 0 1px 7px #182b2096; }
 .page-intro .eyebrow { color: #fff9ef; opacity: .9; text-shadow: 0 1px 6px #182b2096; }
 @media (max-width: 760px) { .hero::before, .page-intro { background-position: 54% center; }.hero { color: #203b30; } }
+.page-intro { min-height: 30svh; height: 30svh; padding: 22px 8vw; align-items: center; }
+.page-intro .eyebrow { margin-bottom: 8px; }
+.page-intro h1 { font-size: clamp(30px, 2.7vw, 42px); line-height: 1; }
+.page-intro h1 + p { margin-top: 10px; font-size: 12px; line-height: 1.6; }
+@media (max-width: 760px) { .page-intro { min-height: 30svh; height: 30svh; padding: 18px 6vw; }.page-intro h1 { font-size: clamp(29px, 8.2vw, 34px); }.page-intro h1 + p { margin-top: 8px; font-size: 11px; line-height: 1.55; } }
 .feature-row { align-items: start; }
 .feature-row > div:nth-child(2) { padding-top: 4px; }
 .feature-row .feature-scenario { margin-top: 13px; padding-left: 15px; border-left: 1px solid #cfab8c; color: #6b5646; font-size: 12px; line-height: 1.8; }
