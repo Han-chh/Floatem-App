@@ -118,13 +118,13 @@ function PageIntro({ label, title, intro, children }: { label: string, title: st
 function Features({ t, go }: { t: Translation, go: (page: Page) => void }) {
   const images = [screenshots.appStore.notes, screenshots.appStore.floating, screenshots.appStore.tasks, screenshots.appStore.desktop, screenshots.appStore.themes, screenshots.appStore.guide]
   return <PageIntro label={t.features.label} title={t.features.title} intro={t.features.intro}>
-    <section className="feature-list">{t.features.items.map(([number, title, body, scenario, detail], index) => <Reveal className="feature-row" key={number}><span>{number}</span><div><h2>{title}</h2><p>{body}</p><p className="feature-scenario">{scenario}</p><small>{detail}</small></div><FeatureVisual image={images[index]} animated={index === 1} t={t} /></Reveal>)}</section>
+    <section className="feature-list">{t.features.items.map(([number, title, body, scenario, detail], index) => <Reveal className="feature-row" key={number}><span>{number}</span><div><h2>{title}</h2><p>{body}</p><p className="feature-scenario">{scenario}</p><small>{detail}</small></div><FeatureVisual image={images[index]} videoPreview={index === 1} /></Reveal>)}</section>
     <section className="quiet-cta"><p>{t.home.closing.replace('\n', ' ')}</p><button className="button filled" onClick={() => go('download')}>{t.common.get}<Arrow /></button></section>
   </PageIntro>
 }
 
-function FeatureVisual({ image, animated, t }: { image: string, animated: boolean, t: Translation }) {
-  return <div className={`feature-image${animated ? ' drag-demo' : ''}`}><img src={`.${image}`} alt="" />{animated && <><span className="drag-source">{t.features.dragSource}</span><span className="drag-card"><i /><i /><i /></span><span className="drag-state">{t.features.dragState}</span></>}</div>
+function FeatureVisual({ image, videoPreview }: { image: string, videoPreview: boolean }) {
+  return <div className={`feature-media${videoPreview ? ' feature-media-video' : ''}`}><div className="feature-image"><img src={`.${image}`} alt="" /></div>{videoPreview && <div className="feature-video"><video autoPlay controls loop muted playsInline preload="metadata" poster={`.${image}`}><source src="/videos/floatem-card-float-demo.mp4" type="video/mp4" /></video></div>}</div>
 }
 
 function Download({ t, locale }: { t: Translation, locale: Locale }) {
