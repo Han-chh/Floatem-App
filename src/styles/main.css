@@ -104,4 +104,7 @@ footer { display: flex; align-items: flex-end; justify-content: space-between; g
 .feature-video-wide { grid-column: 1 / -1; margin-top: 14px; }
 .feature-video video { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; background: #292c29; }
 @media (max-width: 760px) { .feature-row .feature-scenario { margin-top: 12px; padding-left: 12px; font-size: 11px; }.feature-video-wide { grid-column: 1 / -1; margin-top: 8px; }.feature-image, .feature-image img { min-height: 190px; height: 190px; } }
+.quiet-cta { max-width: 1080px; margin: 0 auto; padding: 39px 8vw 31px; background: transparent; }
+.quiet-cta p { max-width: none; font-family: "Cormorant Garamond", "Noto Serif SC", serif; font-size: clamp(27px, 3vw, 42px); font-style: italic; letter-spacing: -.045em; }
+@media (max-width: 760px) { .quiet-cta { margin: 0; padding: 28px 6vw 23px; display: flex; gap: 18px; }.quiet-cta p { font-size: 25px; line-height: 1.12; }.quiet-cta .button { flex: none; padding: 11px 13px; } }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; } }
