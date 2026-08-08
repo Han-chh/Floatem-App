@@ -117,7 +117,7 @@ function PageIntro({ label, title, intro, children }: { label: string, title: st
 
 function Features({ t, go }: { t: Translation, go: (page: Page) => void }) {
   const images = [screenshots.appStore.floating, screenshots.appStore.desktop, screenshots.appStore.tasks, screenshots.appStore.guide, screenshots.appStore.themes]
-  const videos = ['./videos/floatem-card-float-demo.mp4', undefined, './videos/floatem-todo-demo.mp4']
+  const videos = ['./videos/floatem-card-float-demo.mp4', './videos/floatem-capture-demo-safe.mp4', './videos/floatem-todo-demo.mp4']
   return <PageIntro label={t.features.label} title={t.features.title} intro={t.features.intro}>
     <section className="quiet-cta"><p>Don't lose thoughts, Float 'em.</p><button className="button filled" onClick={() => go('download')}>{t.common.get}<Arrow /></button></section>
     <section className="feature-list">{t.features.items.map(([number, title, body, scenario, detail], index) => <Reveal className="feature-row" key={number}><span>{number}</span><div><h2>{title}</h2><p>{body}</p><p className="feature-scenario">{scenario}</p><small>{detail}</small></div><FeatureVisual image={images[index]} videoSrc={videos[index]} /></Reveal>)}</section>
