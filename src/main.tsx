@@ -1,4 +1,4 @@
-import { useEffect, useState, type CSSProperties, type ReactNode } from 'react'
+import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { Apple, Arrow, Windows } from './components/Icons'
 import { Reveal } from './components/Reveal'
@@ -124,7 +124,21 @@ function Features({ t, go }: { t: Translation, go: (page: Page) => void }) {
 }
 
 function FeatureVisual({ image, videoPreview }: { image: string, videoPreview: boolean }) {
-  return <div className={`feature-media${videoPreview ? ' feature-media-video' : ''}`}><div className="feature-image"><img src={`.${image}`} alt="" /></div>{videoPreview && <div className="feature-video"><video autoPlay controls loop muted playsInline preload="metadata" poster={`.${image}`}><source src="/videos/floatem-card-float-demo.mp4" type="video/mp4" /></video></div>}</div>
+  return <><div className="feature-image"><img src={`.${image}`} alt="" /></div>{videoPreview && <FeatureVideo poster={image} />}</>
+}
+
+function FeatureVideo({ poster }: { poster: string }) {
+  const videoRef = useRef<HTMLVideoElement>(null)
+  useEffect(() => {
+    const video = videoRef.current
+    if (!video) return
+    const play = () => { video.muted = true; void video.play().catch(() => undefined) }
+    const observer = new IntersectionObserver(([entry]) => entry.isIntersecting ? play() : video.pause(), { threshold: .35 })
+    observer.observe(video)
+    play()
+    return () => observer.disconnect()
+  }, [])
+  return <div className="feature-video feature-video-wide"><video ref={videoRef} autoPlay loop muted playsInline preload="auto" poster={`.${poster}`} onCanPlay={(event) => { event.currentTarget.muted = true; void event.currentTarget.play().catch(() => undefined) }}><source src="/videos/floatem-card-float-demo.mp4" type="video/mp4" /></video></div>
 }
 
 function Download({ t, locale }: { t: Translation, locale: Locale }) {
