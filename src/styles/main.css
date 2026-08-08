@@ -90,5 +90,9 @@ footer { display: flex; align-items: flex-end; justify-content: space-between; g
 .hero-body, .page-intro h1 + p { color: #254137; opacity: .86; }
 .hero .inline-link { border-color: #25413775; }
 .floating-caption { color: #264035; }
+.page-intro { color: #fff9ef; }
+.page-intro h1 { text-shadow: 0 2px 12px #182b20a8, 0 1px 1px #182b2096; }
+.page-intro h1 + p { color: #fff9ef; opacity: .92; text-shadow: 0 1px 7px #182b2096; }
+.page-intro .eyebrow { color: #fff9ef; opacity: .9; text-shadow: 0 1px 6px #182b2096; }
 @media (max-width: 760px) { .hero::before, .page-intro { background-position: 54% center; }.hero { color: #203b30; } }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; } }
