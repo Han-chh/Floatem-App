@@ -31,4 +31,12 @@ export const screenshots = {
   code: '/images/08-多卡片悬浮-代码工作.png',
   desktop: '/images/09-桌面固定-彩色便签.png',
   todo: '/images/10-待办与提醒.png',
+  appStore: {
+    notes: '/images/app-store/notes.png',
+    floating: '/images/app-store/floating.png',
+    tasks: '/images/app-store/tasks.png',
+    desktop: '/images/app-store/desktop.png',
+    themes: '/images/app-store/themes.png',
+    guide: '/images/app-store/guide.png',
+  },
 }

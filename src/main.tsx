@@ -78,9 +78,9 @@ function Home({ t, locale, go }: { t: Translation, locale: Locale, go: (page: Pa
       <div className="hero-noise" />
       <div className="hero-copy"><p className="eyebrow">{t.home.eyebrow}</p><h1><small>Floatem</small>{t.home.title.map((line) => <span key={line}>{line}</span>)}</h1><p className="hero-body">{t.home.body}</p><div className="hero-actions"><button className="button filled" onClick={() => go('download')}>{t.common.get}<Arrow /></button><button className="inline-link" onClick={() => go('features')}>{t.common.explore}<Arrow /></button></div></div>
       <div className="hero-art" aria-label={locale === 'zh' ? 'Floatem 应用界面示意' : 'Floatem application interface'}>
-        <div className="aurora" /><div className="orbit orbit-one" /><div className="orbit orbit-two" />
-        <div className="float-window distant"><i /><i /><i /></div>
-        <div className="float-window note-window"><div className="window-top"><i /><i /><i /><span>Floatem</span></div><p>{locale === 'zh' ? '今天，想留住什么？' : 'What would you keep today?'}</p><div className="hand-line" /><div className="window-bottom"><span>{locale === 'zh' ? '浮现于此' : 'Float here'}</span><b>↗</b></div></div>
+        <div className="botanical botanical-one"><i /><i /><i /></div>
+        <div className="botanical botanical-two"><i /><i /></div>
+        <div className="hero-screenshot"><img src={`.${screenshots.appStore.notes}`} alt={locale === 'zh' ? 'Floatem 笔记界面' : 'Floatem notes interface'} /></div>
         <div className="floating-caption">{t.home.note}</div>
       </div>
       <div className="hero-release"><span>{t.common.latest}</span><b>v{release.version}</b><i>↓</i></div>
@@ -118,9 +118,9 @@ function PageIntro({ label, title, intro, children }: { label: string, title: st
 }
 
 function Features({ t, go }: { t: Translation, go: (page: Page) => void }) {
-  const images = [screenshots.desktop, screenshots.todo, screenshots.code, themes[3].image]
+  const images = [screenshots.appStore.notes, screenshots.appStore.notes, screenshots.appStore.tasks, screenshots.appStore.floating, screenshots.appStore.desktop, screenshots.appStore.guide]
   return <PageIntro label={t.features.label} title={t.features.title} intro={t.features.intro}>
-    <section className="feature-list">{t.features.items.map(([number, title, body], index) => <Reveal className="feature-row" key={number}><span>{number}</span><div><h2>{title}</h2><p>{body}</p></div><img src={`.${images[index]}`} alt="" /></Reveal>)}</section>
+    <section className="feature-list">{t.features.items.map(([number, title, body, detail], index) => <Reveal className="feature-row" key={number}><span>{number}</span><div><h2>{title}</h2><p>{body}</p><small>{detail}</small></div><div className="feature-image"><img src={`.${images[index]}`} alt="" /></div></Reveal>)}</section>
     <section className="quiet-cta"><p>{t.home.closing.replace('\n', ' ')}</p><button className="button filled" onClick={() => go('download')}>{t.common.get}<Arrow /></button></section>
   </PageIntro>
 }
@@ -140,7 +140,7 @@ function Download({ t, locale }: { t: Translation, locale: Locale }) {
 function Support({ t }: { t: Translation }) {
   const [open, setOpen] = useState(0)
   return <PageIntro label={t.support.label} title={t.support.title} intro={t.support.intro}>
-    <a className="support-contact" href={`mailto:${support.email}?subject=Floatem%20Support`}><span>{t.support.contact}</span><strong>{support.email}</strong><Arrow diagonal /></a>
+    <section className="support-contact"><div><p>{t.support.contact}</p><h2>{t.support.contactTitle}</h2><span>{t.support.contactHint}</span></div><a href={`mailto:${support.email}?subject=Floatem%20Support`}><em>{support.email}</em><Arrow diagonal /></a><ul>{t.support.contactTopics.map((topic) => <li key={topic}>{topic}</li>)}</ul></section>
     <section className="faq"><p className="eyebrow">{t.support.faq}</p>{t.support.questions.map(([question, answer], index) => <button className={`faq-item ${open === index ? 'expanded' : ''}`} key={question} onClick={() => setOpen(open === index ? -1 : index)}><div><span>0{index + 1}</span><h2>{question}</h2><b>+</b></div><p>{answer}</p></button>)}</section>
   </PageIntro>
 }
