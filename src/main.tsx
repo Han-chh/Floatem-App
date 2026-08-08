@@ -1,19 +1,19 @@
-import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react'
+import { useEffect, useRef, useState, type ReactNode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { Apple, Arrow } from './components/Icons'
 import { Reveal } from './components/Reveal'
-import { release, screenshots, support, themes, type Locale } from './content/site'
+import { release, screenshots, support, type Locale } from './content/site'
 import { en } from './locales/en'
 import { zh } from './locales/zh'
 import './styles/main.css'
 
-type Page = 'home' | 'features' | 'download' | 'support' | 'privacy'
+type Page = 'features' | 'download' | 'support' | 'privacy'
 type Translation = typeof zh
-const pages: Page[] = ['home', 'features', 'download', 'support', 'privacy']
+const pages: Page[] = ['features', 'download', 'support', 'privacy']
 
 function route(): Page {
   const value = window.location.hash.replace('#/', '').replace('#', '') as Page
-  return pages.includes(value) ? value : 'home'
+  return pages.includes(value) ? value : 'features'
 }
 
 function splitLines(value: string) {
@@ -26,7 +26,7 @@ function App() {
   const [menuOpen, setMenuOpen] = useState(false)
   const t = locale === 'zh' ? zh : en
   const go = (next: Page) => {
-    window.location.hash = next === 'home' ? '' : `/${next}`
+    window.location.hash = `/${next}`
     setPage(next)
     setMenuOpen(false)
     window.scrollTo({ top: 0, behavior: 'smooth' })
@@ -46,7 +46,6 @@ function App() {
   return <>
     <Header t={t} page={page} locale={locale} setLocale={setLocale} go={go} menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
     <main key={page} className="page-enter">
-      {page === 'home' && <Home t={t} locale={locale} go={go} />}
       {page === 'features' && <Features t={t} go={go} />}
       {page === 'download' && <Download t={t} locale={locale} />}
       {page === 'support' && <Support t={t} />}
@@ -59,7 +58,7 @@ function App() {
 function Header({ t, page, locale, setLocale, go, menuOpen, setMenuOpen }: { t: Translation, page: Page, locale: Locale, setLocale: (locale: Locale) => void, go: (page: Page) => void, menuOpen: boolean, setMenuOpen: (open: boolean) => void }) {
   const nav = ['features', 'download', 'support', 'privacy'] as const
   return <header className="site-header">
-    <button className="brand" onClick={() => go('home')} aria-label="Floatem home"><img className="app-icon" src="./floatem-app-icon-macos.png" alt="" /><span>Floatem</span></button>
+    <button className="brand" onClick={() => go('features')} aria-label="Floatem features"><img className="app-icon" src="./floatem-app-icon-macos.png" alt="" /><span>Floatem</span></button>
     <nav className={menuOpen ? 'open' : ''} aria-label="Main navigation">
       {nav.map((item) => <button key={item} className={page === item ? 'active' : ''} onClick={() => go(item)}>{t.nav[item]}</button>)}
       <button className="language mobile-language" onClick={() => setLocale(locale === 'zh' ? 'en' : 'zh')}>{locale === 'zh' ? 'EN' : '中文'}</button>
@@ -67,48 +66,6 @@ function Header({ t, page, locale, setLocale, go, menuOpen, setMenuOpen }: { t: 
     <button className="language desktop-language" onClick={() => setLocale(locale === 'zh' ? 'en' : 'zh')}>{locale === 'zh' ? 'EN' : '中文'}</button>
     <button className={`menu-toggle ${menuOpen ? 'open' : ''}`} onClick={() => setMenuOpen(!menuOpen)} aria-label="Menu"><i /><i /></button>
   </header>
-}
-
-function Home({ t, locale, go }: { t: Translation, locale: Locale, go: (page: Page) => void }) {
-  const [themeIndex, setThemeIndex] = useState(0)
-  const theme = themes[themeIndex]
-  const style = { '--theme': theme.color, '--theme-deep': theme.deep } as CSSProperties
-  return <>
-    <section className="hero" style={style}>
-      <div className="hero-noise" />
-      <div className="hero-copy"><p className="eyebrow">{t.home.eyebrow}</p><h1><small>Floatem</small>{t.home.title.map((line) => <span key={line}>{line}</span>)}</h1><p className="hero-body">{t.home.body}</p><div className="hero-actions"><button className="button filled" onClick={() => go('download')}>{t.common.get}<Arrow /></button><button className="inline-link" onClick={() => go('features')}>{t.common.explore}<Arrow /></button></div></div>
-      <div className="hero-art" aria-label={locale === 'zh' ? 'Floatem 应用界面示意' : 'Floatem application interface'}>
-        <div className="hero-screenshot"><img src={`.${screenshots.homeHero}`} alt={locale === 'zh' ? 'Floatem 在代码、视频与桌面工作场景中的悬浮卡片' : 'Floatem floating cards across code, video, and desktop work'} /></div>
-        <div className="floating-caption">{t.home.note}</div>
-      </div>
-      <div className="hero-release"><span>{t.common.latest}</span><b>v{release.version}</b><i>↓</i></div>
-    </section>
-
-    <section className="theme-section">
-      <Reveal className="section-heading"><p className="eyebrow">{t.common.allThemes}</p><h2>{splitLines(t.home.themeTitle)}</h2><p>{t.home.themeBody}</p></Reveal>
-      <div className="theme-showcase" style={style}>
-        <div className="theme-image"><img key={theme.id} src={`.${theme.image}`} alt={`${locale === 'zh' ? theme.zh : theme.en} theme`} /></div>
-        <div className="theme-detail"><span>0{themeIndex + 1}</span><strong>{locale === 'zh' ? theme.zh : theme.en}</strong><em>{locale === 'zh' ? '此刻的桌面色彩。' : 'A color for this moment.'}</em></div>
-        <div className="theme-picker" aria-label={t.common.allThemes}>{themes.map((item, index) => <button key={item.id} className={index === themeIndex ? 'selected' : ''} style={{ '--dot': item.color } as CSSProperties} onClick={() => setThemeIndex(index)} aria-label={locale === 'zh' ? item.zh : item.en}><i /></button>)}</div>
-      </div>
-    </section>
-
-    <section className="flow-section">
-      <Reveal className="section-heading"><p className="eyebrow">FLOAT WITH YOUR FLOW</p><h2>{splitLines(t.home.flowTitle)}</h2><p>{t.home.flowBody}</p></Reveal>
-      <div className="scene-grid">
-        <Scene image={screenshots.video} label="01" title={t.home.scenes[0]} />
-        <Scene image={screenshots.code} label="02" title={t.home.scenes[1]} />
-        <Scene image={screenshots.desktop} label="03" title={t.home.scenes[2]} />
-        <Scene image={screenshots.todo} label="04" title={t.home.scenes[3]} />
-      </div>
-    </section>
-
-    <section className="closing"><div className="closing-sun" /><Reveal><p>Floatem</p><h2>{splitLines(t.home.closing)}</h2><button className="button light" onClick={() => go('download')}>{t.common.get}<Arrow /></button></Reveal></section>
-  </>
-}
-
-function Scene({ image, label, title }: { image: string, label: string, title: string }) {
-  return <Reveal className="scene"><div className="scene-image"><img src={`.${image}`} alt="" /></div><div><span>{label}</span><h3>{title}</h3></div></Reveal>
 }
 
 function PageIntro({ label, title, intro, children }: { label: string, title: string, intro: string, children: ReactNode }) {
@@ -120,7 +77,7 @@ function Features({ t, go }: { t: Translation, go: (page: Page) => void }) {
   const videos = ['./videos/floatem-card-float-demo.mp4', './videos/floatem-capture-demo-safe.mp4', './videos/floatem-todo-demo.mp4']
   return <PageIntro label={t.features.label} title={t.features.title} intro={t.features.intro}>
     <section className="quiet-cta"><p>Don't lose thoughts, Float 'em.</p><button className="button filled" onClick={() => go('download')}>{t.common.get}<Arrow /></button></section>
-    <section className="feature-list">{t.features.items.map(([number, title, body, scenario, detail], index) => <Reveal className="feature-row" key={number}><span>{number}</span><div><h2>{title}</h2><p>{body}</p><p className="feature-scenario">{scenario}</p>{number === '03' ? <ol className="feature-step-chain">{detail.split(' → ').map((step, stepIndex) => <li key={step}><span>{String(stepIndex + 1).padStart(2, '0')}</span><strong>{step}</strong></li>)}</ol> : <small>{detail}</small>}</div><FeatureVisual image={images[index]} videoSrc={videos[index]} /></Reveal>)}</section>
+    <section className="feature-list">{t.features.items.map(([number, title, body, scenario, detail], index) => <Reveal className="feature-row" key={number}><span>{number}</span><div><h2>{title}</h2><p>{body}</p><p className="feature-scenario">{scenario}</p>{number === '03' ? <ol className="feature-step-chain">{detail.split(' → ').map((step, stepIndex) => <li key={`${stepIndex}-${step}`}><span>{String(stepIndex + 1).padStart(2, '0')}</span><strong>{step}</strong></li>)}</ol> : <small>{detail}</small>}</div><FeatureVisual image={images[index]} videoSrc={videos[index]} /></Reveal>)}</section>
   </PageIntro>
 }
 
@@ -167,7 +124,7 @@ function Privacy({ t }: { t: Translation }) {
 }
 
 function Footer({ t, go }: { t: Translation, go: (page: Page) => void }) {
-  return <footer><button className="footer-brand" onClick={() => go('home')}><img className="app-icon" src="./floatem-app-icon-macos.png" alt="" /><strong>Floatem</strong><span>© {new Date().getFullYear()} Floatem</span></button><div><button onClick={() => go('support')}>{t.nav.support}</button><button onClick={() => go('privacy')}>{t.nav.privacy}</button><a href={`mailto:${support.email}`}>{support.email}</a></div></footer>
+  return <footer><button className="footer-brand" onClick={() => go('features')}><img className="app-icon" src="./floatem-app-icon-macos.png" alt="" /><strong>Floatem</strong><span>© {new Date().getFullYear()} Floatem</span></button><div><button onClick={() => go('support')}>{t.nav.support}</button><button onClick={() => go('privacy')}>{t.nav.privacy}</button><a href={`mailto:${support.email}`}>{support.email}</a></div></footer>
 }
 
 createRoot(document.getElementById('root')!).render(<App />)
