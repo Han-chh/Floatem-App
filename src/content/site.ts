@@ -6,7 +6,7 @@ export const release = {
   date: '2026.08.07',
   macDownload: 'https://apps.apple.com/',
   windowsDownload: '',
-  macRequirement: 'macOS 14.0 或更高版本',
+  macRequirement: { zh: 'macOS 14.0 或更高版本', en: 'macOS 14.0 or later' },
   windowsRequirement: 'Windows 10 / 11',
   notes: [
     { zh: '全新的引导式教程，让第一次相遇自然发生。', en: 'A guided first-run experience for a gentler beginning.' },
