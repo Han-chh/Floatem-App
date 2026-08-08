@@ -78,8 +78,6 @@ function Home({ t, locale, go }: { t: Translation, locale: Locale, go: (page: Pa
       <div className="hero-noise" />
       <div className="hero-copy"><p className="eyebrow">{t.home.eyebrow}</p><h1><small>Floatem</small>{t.home.title.map((line) => <span key={line}>{line}</span>)}</h1><p className="hero-body">{t.home.body}</p><div className="hero-actions"><button className="button filled" onClick={() => go('download')}>{t.common.get}<Arrow /></button><button className="inline-link" onClick={() => go('features')}>{t.common.explore}<Arrow /></button></div></div>
       <div className="hero-art" aria-label={locale === 'zh' ? 'Floatem 应用界面示意' : 'Floatem application interface'}>
-        <div className="botanical botanical-one"><i /><i /><i /></div>
-        <div className="botanical botanical-two"><i /><i /></div>
         <div className="hero-screenshot"><img src={`.${screenshots.appStore.notes}`} alt={locale === 'zh' ? 'Floatem 笔记界面' : 'Floatem notes interface'} /></div>
         <div className="floating-caption">{t.home.note}</div>
       </div>
@@ -114,7 +112,7 @@ function Scene({ image, label, title }: { image: string, label: string, title: s
 }
 
 function PageIntro({ label, title, intro, children }: { label: string, title: string, intro: string, children: ReactNode }) {
-  return <><section className="page-intro"><div><p className="eyebrow">{label}</p><h1>{splitLines(title)}</h1><p>{intro}</p></div><div className="intro-art"><i /><i /><i /></div></section>{children}</>
+  return <><section className="page-intro"><div><p className="eyebrow">{label}</p><h1>{splitLines(title)}</h1><p>{intro}</p></div></section>{children}</>
 }
 
 function Features({ t, go }: { t: Translation, go: (page: Page) => void }) {
