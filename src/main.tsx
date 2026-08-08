@@ -120,15 +120,16 @@ function Features({ t, go }: { t: Translation, go: (page: Page) => void }) {
   const videos = ['./videos/floatem-capture-demo-safe.mp4', './videos/floatem-card-float-demo.mp4']
   return <PageIntro label={t.features.label} title={t.features.title} intro={t.features.intro}>
     <section className="quiet-cta"><p>Don't lose thoughts, Float'em.</p><button className="button filled" onClick={() => go('download')}>{t.common.get}<Arrow /></button></section>
-    <section className="feature-list">{t.features.items.map(([number, title, body, scenario, detail], index) => <Reveal className="feature-row" key={number}><span>{number}</span><div><h2>{title}</h2><p>{body}</p><p className="feature-scenario">{scenario}</p><small>{detail}</small></div><FeatureVisual image={images[index]} videoSrc={videos[index]} /></Reveal>)}</section>
+    <section className="feature-list">{t.features.items.map(([number, title, body, scenario, detail], index) => <Reveal className="feature-row" key={number}><span>{number}</span><div><h2>{title}</h2><p>{body}</p><p className="feature-scenario">{scenario}</p><small>{detail}</small></div><FeatureVisual image={images[index]} videoSrc={videos[index]} videoInline={index === 0} /></Reveal>)}</section>
   </PageIntro>
 }
 
-function FeatureVisual({ image, videoSrc }: { image: string, videoSrc?: string }) {
+function FeatureVisual({ image, videoSrc, videoInline = false }: { image: string, videoSrc?: string, videoInline?: boolean }) {
+  if (videoSrc && videoInline) return <FeatureVideo poster={image} src={videoSrc} inline />
   return <><div className="feature-image"><img src={`.${image}`} alt="" /></div>{videoSrc && <FeatureVideo poster={image} src={videoSrc} />}</>
 }
 
-function FeatureVideo({ poster, src }: { poster: string, src: string }) {
+function FeatureVideo({ poster, src, inline = false }: { poster: string, src: string, inline?: boolean }) {
   const videoRef = useRef<HTMLVideoElement>(null)
   useEffect(() => {
     const video = videoRef.current
@@ -139,7 +140,7 @@ function FeatureVideo({ poster, src }: { poster: string, src: string }) {
     play()
     return () => observer.disconnect()
   }, [])
-  return <div className="feature-video feature-video-wide"><video ref={videoRef} autoPlay loop muted playsInline preload="auto" poster={`.${poster}`} onCanPlay={(event) => { event.currentTarget.muted = true; void event.currentTarget.play().catch(() => undefined) }}><source src={src} type="video/mp4" /></video></div>
+  return <div className={`feature-video ${inline ? 'feature-video-inline' : 'feature-video-wide'}`}><video ref={videoRef} autoPlay loop muted playsInline preload="auto" poster={`.${poster}`} onCanPlay={(event) => { event.currentTarget.muted = true; void event.currentTarget.play().catch(() => undefined) }}><source src={src} type="video/mp4" /></video></div>
 }
 
 function Download({ t, locale }: { t: Translation, locale: Locale }) {
