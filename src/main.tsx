@@ -138,7 +138,7 @@ function FeatureVideo({ poster }: { poster: string }) {
     play()
     return () => observer.disconnect()
   }, [])
-  return <div className="feature-video feature-video-wide"><video ref={videoRef} autoPlay loop muted playsInline preload="auto" poster={`.${poster}`} onCanPlay={(event) => { event.currentTarget.muted = true; void event.currentTarget.play().catch(() => undefined) }}><source src="/videos/floatem-card-float-demo.mp4" type="video/mp4" /></video></div>
+  return <div className="feature-video feature-video-wide"><video ref={videoRef} autoPlay loop muted playsInline preload="auto" poster={`.${poster}`} onCanPlay={(event) => { event.currentTarget.muted = true; void event.currentTarget.play().catch(() => undefined) }}><source src="./videos/floatem-card-float-demo.mp4" type="video/mp4" /></video></div>
 }
 
 function Download({ t, locale }: { t: Translation, locale: Locale }) {
