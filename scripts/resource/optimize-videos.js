@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 
 /**
- * Generate a WebM delivery copy and a WebP poster for each source video.
+ * Generate WebM and H.264 MP4 delivery copies plus a WebP poster for each
+ * source video.
  * Original MP4 files are never changed or removed.
  */
 import { existsSync, mkdirSync, readdirSync, rmSync, writeFileSync } from 'node:fs'
@@ -50,11 +51,13 @@ function main() {
     if (sourceRelativePath.startsWith('..')) throw new Error(`Source is outside --strip-prefix: ${source}`)
     const relativeWithoutExtension = sourceRelativePath.slice(0, -extname(sourceRelativePath).length)
     const webm = join(output, `${relativeWithoutExtension}.webm`)
+    const mp4 = join(output, `${relativeWithoutExtension}.mp4`)
     const poster = join(output, `${relativeWithoutExtension}-poster.webp`)
     const temporaryPoster = join(output, `${relativeWithoutExtension}-poster.png`)
     mkdirSync(dirname(webm), { recursive: true })
 
     run('ffmpeg', ['-y', '-i', source, '-map', '0:v:0', '-map', '0:a?', '-vf', "scale='min(1200,iw)':-2", '-c:v', 'libvpx-vp9', '-crf', '32', '-b:v', '0', '-row-mt', '1', '-c:a', 'libopus', '-b:a', '96k', webm])
+    run('ffmpeg', ['-y', '-i', source, '-map', '0:v:0', '-map', '0:a?', '-vf', "scale='min(1200,iw)':-2", '-c:v', 'libx264', '-crf', '28', '-preset', 'medium', '-pix_fmt', 'yuv420p', '-movflags', '+faststart', '-c:a', 'aac', '-b:a', '96k', mp4])
     // Some FFmpeg distributions omit libwebp. Emit a one-frame PNG first, then
     // use the same ImageMagick encoder as the image pipeline for a portable
     // WebP poster.
@@ -66,6 +69,7 @@ function main() {
     videos[key] = {
       source: sourceRelativePath.split(sep).join('/'),
       webm: `/${relative(websiteRoot, webm).split(sep).join('/')}`,
+      mp4: `/${relative(websiteRoot, mp4).split(sep).join('/')}`,
       poster: `/${relative(websiteRoot, poster).split(sep).join('/')}`,
     }
     console.log(`Optimized ${sourceRelativePath}`)

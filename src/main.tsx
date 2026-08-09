@@ -61,7 +61,7 @@ function App() {
 function Header({ t, page, locale, setLocale, go, menuOpen, setMenuOpen }: { t: Translation, page: Page, locale: Locale, setLocale: (locale: Locale) => void, go: (page: Page) => void, menuOpen: boolean, setMenuOpen: (open: boolean) => void }) {
   const nav = ['features', 'download', 'support', 'privacy'] as const
   return <header className="site-header">
-    <button className="brand" onClick={() => go('features')} aria-label="Floatem features"><OptimizedImage {...appIconImage} className="app-icon" sizes="27px" alt="" priority /><span>Floatem</span></button>
+    <button className="brand" onClick={() => go('features')} aria-label="Floatem features"><OptimizedImage {...appIconImage} className="app-icon" wrapperClassName="app-icon-frame" sizes="27px" alt="" priority /><span>Floatem</span></button>
     <nav className={menuOpen ? 'open' : ''} aria-label="Main navigation">
       {nav.map((item) => <button key={item} className={page === item ? 'active' : ''} onClick={() => go(item)}>{t.nav[item]}</button>)}
       <button className="language mobile-language" onClick={() => setLocale(locale === 'zh' ? 'en' : 'zh')}>{locale === 'zh' ? 'EN' : '中文'}</button>
@@ -72,7 +72,7 @@ function Header({ t, page, locale, setLocale, go, menuOpen, setMenuOpen }: { t: 
 }
 
 function Footer({ t, go }: { t: Translation, go: (page: Page) => void }) {
-  return <footer><button className="footer-brand" onClick={() => go('features')}><OptimizedImage {...appIconImage} className="app-icon" wrapperClassName="footer-icon" sizes="28px" alt="" /><strong>Floatem</strong><span>© {new Date().getFullYear()} Floatem</span></button><div><button onClick={() => go('support')}>{t.nav.support}</button><button onClick={() => go('privacy')}>{t.nav.privacy}</button><a href={`mailto:${support.email}`}>{support.email}</a></div></footer>
+  return <footer><button className="footer-brand" onClick={() => go('features')}><OptimizedImage {...appIconImage} className="app-icon" wrapperClassName="app-icon-frame footer-icon" sizes="28px" alt="" /><strong>Floatem</strong><span>© {new Date().getFullYear()} Floatem</span></button><div><button onClick={() => go('support')}>{t.nav.support}</button><button onClick={() => go('privacy')}>{t.nav.privacy}</button><a href={`mailto:${support.email}`}>{support.email}</a></div></footer>
 }
 
 createRoot(document.getElementById('root')!).render(<App />)

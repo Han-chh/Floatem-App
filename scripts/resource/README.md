@@ -24,7 +24,8 @@ npm run resources:sync
 The image command produces a 1200px WebP preview at quality 80 and a 320px
 WebP thumbnail at quality 70, retaining directory names. Add
 `-- --formats webp,avif` to generate AVIF in addition to WebP. The video
-command produces a capped-width VP9 WebM plus a WebP poster.
+command produces capped-width VP9 WebM and H.264 MP4 delivery files plus a
+WebP poster.
 
 `image-manifest.json` and `video-manifest.json` are generated maps consumed by
 the Phase 4 image and video components. Run `resources:sync` after regenerating

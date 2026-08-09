@@ -1,19 +1,28 @@
 {
-  "generatedAt": "2026-08-09T02:14:56.751Z",
+  "generatedAt": "2026-08-09T02:24:37.506Z",
   "videos": {
     "floatem-capture-demo-safe": {
       "source": "floatem-capture-demo-safe.mp4",
       "webm": "/resources/optimized/videos/floatem-capture-demo-safe.webm",
+      "mp4": "/resources/optimized/videos/floatem-capture-demo-safe.mp4",
       "poster": "/resources/optimized/videos/floatem-capture-demo-safe-poster.webp"
     },
     "floatem-card-float-demo": {
       "source": "floatem-card-float-demo.mp4",
       "webm": "/resources/optimized/videos/floatem-card-float-demo.webm",
+      "mp4": "/resources/optimized/videos/floatem-card-float-demo.mp4",
       "poster": "/resources/optimized/videos/floatem-card-float-demo-poster.webp"
+    },
+    "floatem-reminder-demo": {
+      "source": "floatem-reminder-demo.mp4",
+      "webm": "/resources/optimized/videos/floatem-reminder-demo.webm",
+      "mp4": "/resources/optimized/videos/floatem-reminder-demo.mp4",
+      "poster": "/resources/optimized/videos/floatem-reminder-demo-poster.webp"
     },
     "floatem-todo-demo": {
       "source": "floatem-todo-demo.mp4",
       "webm": "/resources/optimized/videos/floatem-todo-demo.webm",
+      "mp4": "/resources/optimized/videos/floatem-todo-demo.mp4",
       "poster": "/resources/optimized/videos/floatem-todo-demo-poster.webp"
     }
   }

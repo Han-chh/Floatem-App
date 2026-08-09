@@ -11,8 +11,8 @@ type OptimizedVideoProps = {
 
 /**
  * A deliberate, click-to-load video player. No video bytes are requested until
- * the visitor chooses to play a demo; the poster itself stays responsive and
- * lazy-loaded through OptimizedImage.
+ * the visitor chooses to load a demo; once it can play, it starts muted and
+ * looping without requiring a second interaction.
  */
 export function OptimizedVideo({ src, fallbackSrc, poster, posterThumbnail, label }: OptimizedVideoProps) {
   const [shouldLoad, setShouldLoad] = useState(false)
@@ -28,12 +28,19 @@ export function OptimizedVideo({ src, fallbackSrc, poster, posterThumbnail, labe
   return <div className={`optimized-video ${shouldLoad ? 'is-loaded' : ''}`}>
     {shouldLoad
       ? <video
+          autoPlay
           controls
+          loop
+          muted
           playsInline
           preload="metadata"
           poster={poster}
           aria-label={label}
-          onCanPlay={() => setIsLoading(false)}
+          onCanPlay={(event) => {
+            setIsLoading(false)
+            event.currentTarget.muted = true
+            void event.currentTarget.play().catch(() => undefined)
+          }}
           onError={() => { setHasError(true); setIsLoading(false) }}
         >
           <source src={src} type="video/webm" />

@@ -18,7 +18,7 @@ img { display: block; max-width: 100%; }
 .site-header::after { content: ""; position: absolute; inset: 0; z-index: -1; background: #1e2722ed; border-bottom: 1px solid #f7f3ed2c; backdrop-filter: blur(16px); pointer-events: none; }
 .brand { background: none; color: inherit; display: flex; gap: 9px; align-items: center; padding: 8px 0; font-size: 22px; letter-spacing: -.06em; }
 .brand img { width: 27px; height: 27px; }
-.app-icon { border-radius: 22.5%; clip-path: inset(0 round 22.5%); object-fit: cover; }
+.app-icon-frame { border-radius: 25%; clip-path: inset(0 round 25%); }.app-icon { width: 100%; height: 100%; object-fit: cover; }
 .site-header nav { display: flex; gap: 7px; margin-left: auto; margin-right: 20px; }
 .site-header nav button, .language { background: none; color: inherit; padding: 9px 12px; font-size: 13px; font-weight: 600; letter-spacing: .04em; opacity: .82; transition: color .2s ease, background .2s ease, opacity .2s ease; }
 .site-header nav button:hover, .site-header nav button.active, .language:hover { color: #fffaf1; opacity: 1; background: #ffffff1c; }
