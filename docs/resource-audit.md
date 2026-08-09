@@ -53,12 +53,13 @@ used by deployment metadata outside the inspected React source.
 
 | File | Size | Format / dimensions / duration | Current use | Recommendation |
 | --- | ---: | --- | --- | --- |
-| `public/videos/floatem-capture-demo-safe.mp4` | 2.86 MiB | H.264, 1660×1080, 27.0s | Feature item 02 | Generate 1200px VP9 WebM and poster; do not load source until interaction. |
-| `public/videos/floatem-todo-demo.mp4` | 1.34 MiB | H.264, 1660×1080, 36.9s | Feature item 03 | Generate 1200px VP9 WebM and poster; click-to-load. |
-| `public/videos/floatem-card-float-demo.mp4` | 1.07 MiB | H.264, 1280×832, 16.9s | Feature item 01 | Generate VP9 WebM and poster; click-to-load. |
+| `resources/raw/videos/floatem-reminder-demo.mp4` | 51.10 MiB | HEVC, 3320×2160, 33.8s | Feature item 03 | Preserve only as raw source; serve the 1200px WebM/MP4 derivatives. |
+| `public/videos/floatem-capture-demo-safe.mp4` | 2.86 MiB | H.264, 1660×1080, 27.0s | Feature item 02 | Serve the generated 1200px WebM with MP4 fallback; route-autoplay muted. |
+| `public/videos/floatem-todo-demo.mp4` | 1.34 MiB | H.264, 1660×1080, 36.9s | Preserved legacy source | Keep only as raw/archive material; it is no longer rendered. |
+| `public/videos/floatem-card-float-demo.mp4` | 1.07 MiB | H.264, 1280×832, 16.9s | Feature item 01 | Serve the generated VP9 WebM with MP4 fallback; route-autoplay muted. |
 
-No video is larger than the 5 MiB audit threshold. The performance issue is
-loading several videos at once, not an individual oversized file.
+The new reminder source exceeds the 5 MiB threshold but is retained only under
+`resources/raw`. The deployed Feature videos are capped-width delivery copies.
 
 ## Static usage and initial-loading findings
 
@@ -97,6 +98,6 @@ The new scripts preserve current originals, generate 320px thumbnail and
 uses `OptimizedImage` for every website image: below-the-fold media is lazy,
 responsive WebP is selected with `srcset`/`sizes`, and the original local image
 remains a fallback. Phase 5 uses `OptimizedVideo`: only a responsive poster is
-requested initially, while WebM/MP4 sources are added after a visitor clicks
-Play. `resources:sync` makes only generated delivery assets available to Vite
+mounted immediately by the Features route, autoplay muted and looped, and use
+WebM/MP4 delivery copies. `resources:sync` makes only generated delivery assets available to Vite
 under `/resources/optimized/` without changing the website's visual design.

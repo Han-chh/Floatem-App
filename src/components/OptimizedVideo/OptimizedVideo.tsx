@@ -1,58 +1,58 @@
-import { useState } from 'react'
-import { OptimizedImage } from '../OptimizedImage'
+import { useRef, useState } from 'react'
 
 type OptimizedVideoProps = {
   src: string
   fallbackSrc: string
   poster: string
-  posterThumbnail: string
   label: string
 }
 
 /**
- * A deliberate, click-to-load video player. No video bytes are requested until
- * the visitor chooses to load a demo; once it can play, it starts muted and
- * looping without requiring a second interaction.
+ * Autoplays an optimized, muted demo as soon as its route mounts. WebM is used
+ * first and the generated H.264 MP4 is available for browsers without WebM.
  */
-export function OptimizedVideo({ src, fallbackSrc, poster, posterThumbnail, label }: OptimizedVideoProps) {
-  const [shouldLoad, setShouldLoad] = useState(false)
-  const [isLoading, setIsLoading] = useState(false)
+export function OptimizedVideo({ src, fallbackSrc, poster, label }: OptimizedVideoProps) {
+  const videoRef = useRef<HTMLVideoElement>(null)
+  const [isLoading, setIsLoading] = useState(true)
   const [hasError, setHasError] = useState(false)
 
-  const loadVideo = () => {
-    setHasError(false)
-    setIsLoading(true)
-    setShouldLoad(true)
+  const startPlayback = (video: HTMLVideoElement) => {
+    video.muted = true
+    void video.play().catch(() => undefined)
   }
 
-  return <div className={`optimized-video ${shouldLoad ? 'is-loaded' : ''}`}>
-    {shouldLoad
-      ? <video
-          autoPlay
-          controls
-          loop
-          muted
-          playsInline
-          preload="metadata"
-          poster={poster}
-          aria-label={label}
-          onCanPlay={(event) => {
-            setIsLoading(false)
-            event.currentTarget.muted = true
-            void event.currentTarget.play().catch(() => undefined)
-          }}
-          onError={() => { setHasError(true); setIsLoading(false) }}
-        >
-          <source src={src} type="video/webm" />
-          <source src={fallbackSrc} type="video/mp4" />
-          Your browser does not support embedded video.
-        </video>
-      : <button className="optimized-video-launch" type="button" onClick={loadVideo} aria-label={`Play ${label}`}>
-          <OptimizedImage src={poster} thumbnail={posterThumbnail} fallback={poster} sizes="(max-width: 760px) 88vw, 1080px" alt="" />
-          <span className="optimized-video-play" aria-hidden="true">▶</span>
-          <span className="optimized-video-label">Play demo</span>
-        </button>}
-    {isLoading && <span className="optimized-video-status" role="status">Loading video…</span>}
-    {hasError && <button className="optimized-video-retry" type="button" onClick={loadVideo}>Try again</button>}
+  const retry = () => {
+    const video = videoRef.current
+    if (!video) return
+    setHasError(false)
+    setIsLoading(true)
+    video.load()
+  }
+
+  return <div className="optimized-video is-loaded">
+    <video
+      ref={videoRef}
+      autoPlay
+      controls
+      loop
+      muted
+      playsInline
+      preload="auto"
+      poster={poster}
+      aria-label={label}
+      onCanPlay={(event) => {
+        setIsLoading(false)
+        startPlayback(event.currentTarget)
+      }}
+      onPlaying={() => setIsLoading(false)}
+      onWaiting={() => setIsLoading(true)}
+      onError={() => { setHasError(true); setIsLoading(false) }}
+    >
+      <source src={src} type="video/webm" />
+      <source src={fallbackSrc} type="video/mp4" />
+      Your browser does not support embedded video.
+    </video>
+    {isLoading && !hasError && <span className="optimized-video-status" role="status">Loading video…</span>}
+    {hasError && <button className="optimized-video-retry" type="button" onClick={retry}>Try again</button>}
   </div>
 }

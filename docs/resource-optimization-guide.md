@@ -18,7 +18,7 @@ website/
 └── src/
     ├── components/
     │   ├── OptimizedImage/         # Responsive image + placeholder component
-    │   └── OptimizedVideo/         # Click-to-load video component
+│   └── OptimizedVideo/         # Autoplaying optimized video component
     ├── content/rootMedia.ts        # Small assets used by the application shell
     └── pages/
         ├── homeMedia.ts            # Home-only image imports
@@ -101,8 +101,9 @@ instead.
    npm run resources:sync
    ```
 
-   The script retains the original and generates a width-capped VP9 WebM plus
-   a WebP poster. It also updates `video-manifest.json`.
+   The script retains the original and generates width-capped VP9 WebM and
+   H.264 MP4 delivery files plus a WebP poster. It also updates
+   `video-manifest.json`.
 
 3. Add its static URLs to `src/pages/featuresMedia.ts` (or the media
    module belonging to the route that owns it). Use `new URL` for both the WebM
@@ -117,10 +118,10 @@ instead.
    />
    ```
 
-`OptimizedVideo` initially renders a poster only. It does not mount a video
-element or source until the visitor selects Play. After that interaction it
-loads video metadata and shows browser controls. Do not add `autoPlay`, a
-source element outside this component, or `preload="auto"`.
+`OptimizedVideo` mounts its optimized sources as soon as its route renders and
+autoplays muted, looped video when it can play. It keeps browser controls so a
+visitor can pause or enable sound. Do not add a second video element outside
+this component.
 
 ## Commands
 
@@ -133,7 +134,7 @@ npm run resources:images
 # Generate only thumbnails when needed.
 npm run resources:thumbnails
 
-# Generate WebM videos and WebP posters from resources/raw/videos.
+# Generate WebM/MP4 videos and WebP posters from resources/raw/videos.
 npm run resources:videos
 
 # Refresh Vite-tracked asset imports after generating resources.
@@ -169,5 +170,5 @@ vite build --config vite.config.ts
 4. Open the page using the new media and verify the image appears at desktop and
    mobile widths.
 5. Confirm below-the-fold images are lazy in DevTools Network.
-6. Confirm a video sends no WebM/MP4 request until Play is selected, then plays
-   with controls.
+6. Confirm each video starts muted and looping as soon as the Features route
+   renders, and that controls can pause it or enable sound.
