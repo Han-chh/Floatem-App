@@ -39,6 +39,9 @@ copying legacy fallback files after browser-support requirements are agreed.
   loading, async decoding, and a blur-up placeholder.
 - Videos mount their optimized WebM source (with H.264 MP4 fallback) when the
   Features route renders, then autoplay muted and looped without a click.
+- Autoplay is a product requirement for demonstration media. Future video
+  changes must optimize the delivery asset instead of converting playback to a
+  click-to-play or deferred-source interaction.
 - Every page is a `React.lazy()` import behind `Suspense`; route-only feature
   and policy code is no longer part of the entry module.
 - `resources:sync` writes Vite-tracked `new URL()` imports. Production builds

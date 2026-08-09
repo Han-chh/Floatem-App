@@ -2,6 +2,7 @@ import { useRef, useState } from 'react'
 
 type OptimizedVideoProps = {
   src: string
+  sourceType?: 'video/webm' | 'video/mp4'
   fallbackSrc: string
   poster: string
   label: string
@@ -11,7 +12,7 @@ type OptimizedVideoProps = {
  * Autoplays an optimized, muted demo as soon as its route mounts. WebM is used
  * first and the generated H.264 MP4 is available for browsers without WebM.
  */
-export function OptimizedVideo({ src, fallbackSrc, poster, label }: OptimizedVideoProps) {
+export function OptimizedVideo({ src, sourceType = 'video/webm', fallbackSrc, poster, label }: OptimizedVideoProps) {
   const videoRef = useRef<HTMLVideoElement>(null)
   const [isLoading, setIsLoading] = useState(true)
   const [hasError, setHasError] = useState(false)
@@ -48,8 +49,8 @@ export function OptimizedVideo({ src, fallbackSrc, poster, label }: OptimizedVid
       onWaiting={() => setIsLoading(true)}
       onError={() => { setHasError(true); setIsLoading(false) }}
     >
-      <source src={src} type="video/webm" />
-      <source src={fallbackSrc} type="video/mp4" />
+      <source src={src} type={sourceType} />
+      {fallbackSrc !== src && <source src={fallbackSrc} type="video/mp4" />}
       Your browser does not support embedded video.
     </video>
     {isLoading && !hasError && <span className="optimized-video-status" role="status">Loading video…</span>}

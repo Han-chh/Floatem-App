@@ -35,6 +35,11 @@ The `raw` directory preserves originals. The `optimized` directory is generated
 from it. Never edit or rename generated files directly: run the scripts again
 instead.
 
+When a raw video exceeds GitHub's 100 MiB file limit, track that individual
+source with Git LFS before adding it. The optimized delivery MP4/WebM and WebP
+poster remain ordinary Git files so GitHub Pages receives them during the
+normal deployment build.
+
 ## Add a new image
 
 1. Put the original PNG or JPEG in `resources/raw/images/`. Keep its
@@ -122,6 +127,20 @@ instead.
 autoplays muted, looped video when it can play. It keeps browser controls so a
 visitor can pause or enable sound. Do not add a second video element outside
 this component.
+
+### Required autoplay behavior
+
+Product demonstration videos are an intentional part of the page experience:
+they **must start automatically when their route opens**. Do not replace
+`OptimizedVideo` with click-to-play, deferred-source, or poster-only behavior.
+Every demonstration must remain `autoPlay`, `muted`, `loop`, `playsInline`, and
+`preload="auto"` so browser autoplay policies allow it to begin without a
+visitor action.
+
+Performance work must support this requirement rather than remove it: cap new
+recordings at 1200px and 30fps, remove an inaudible or unnecessary audio track,
+use H.264 with `faststart` (and WebM where practical), and include a WebP
+poster. Preserve the recording's native aspect ratio in its feature styling.
 
 ## Commands
 

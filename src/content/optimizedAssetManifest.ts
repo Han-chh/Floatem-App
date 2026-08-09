@@ -48,6 +48,8 @@ export const optimizedAssetManifest = {
   "/resources/optimized/videos/floatem-card-float-demo-poster.webp": new URL("../../resources/optimized/videos/floatem-card-float-demo-poster.webp", import.meta.url).href,
   "/resources/optimized/videos/floatem-card-float-demo.mp4": new URL("../../resources/optimized/videos/floatem-card-float-demo.mp4", import.meta.url).href,
   "/resources/optimized/videos/floatem-card-float-demo.webm": new URL("../../resources/optimized/videos/floatem-card-float-demo.webm", import.meta.url).href,
+  "/resources/optimized/videos/floatem-guide-onboarding-demo-poster.webp": new URL("../../resources/optimized/videos/floatem-guide-onboarding-demo-poster.webp", import.meta.url).href,
+  "/resources/optimized/videos/floatem-guide-onboarding-demo.mp4": new URL("../../resources/optimized/videos/floatem-guide-onboarding-demo.mp4", import.meta.url).href,
   "/resources/optimized/videos/floatem-reminder-demo-poster.webp": new URL("../../resources/optimized/videos/floatem-reminder-demo-poster.webp", import.meta.url).href,
   "/resources/optimized/videos/floatem-reminder-demo.mp4": new URL("../../resources/optimized/videos/floatem-reminder-demo.mp4", import.meta.url).href,
   "/resources/optimized/videos/floatem-reminder-demo.webm": new URL("../../resources/optimized/videos/floatem-reminder-demo.webm", import.meta.url).href,
