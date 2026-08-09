@@ -6,7 +6,11 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "resources:images": "node scripts/resource/optimize-images.js",
+    "resources:thumbnails": "node scripts/resource/generate-thumbnails.js",
+    "resources:videos": "node scripts/resource/optimize-videos.js",
+    "resources:sync": "node scripts/resource/sync-optimized-resources.js"
   },
   "dependencies": {
     "@vitejs/plugin-react": "latest",

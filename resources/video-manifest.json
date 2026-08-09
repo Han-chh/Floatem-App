@@ -1,0 +1,20 @@
+{
+  "generatedAt": "2026-08-09T02:14:56.751Z",
+  "videos": {
+    "floatem-capture-demo-safe": {
+      "source": "floatem-capture-demo-safe.mp4",
+      "webm": "/resources/optimized/videos/floatem-capture-demo-safe.webm",
+      "poster": "/resources/optimized/videos/floatem-capture-demo-safe-poster.webp"
+    },
+    "floatem-card-float-demo": {
+      "source": "floatem-card-float-demo.mp4",
+      "webm": "/resources/optimized/videos/floatem-card-float-demo.webm",
+      "poster": "/resources/optimized/videos/floatem-card-float-demo-poster.webp"
+    },
+    "floatem-todo-demo": {
+      "source": "floatem-todo-demo.mp4",
+      "webm": "/resources/optimized/videos/floatem-todo-demo.webm",
+      "poster": "/resources/optimized/videos/floatem-todo-demo-poster.webp"
+    }
+  }
+}

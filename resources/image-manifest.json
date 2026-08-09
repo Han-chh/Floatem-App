@@ -1,0 +1,236 @@
+{
+  "generatedAt": "2026-08-09T02:14:17.457Z",
+  "images": {
+    "floatem-app-icon-macos": {
+      "source": "floatem-app-icon-macos.png",
+      "thumbnail": "/resources/optimized/floatem-app-icon-macos-thumb.webp",
+      "preview": "/resources/optimized/floatem-app-icon-macos.webp",
+      "formats": {
+        "webp": {
+          "thumbnail": "/resources/optimized/floatem-app-icon-macos-thumb.webp",
+          "preview": "/resources/optimized/floatem-app-icon-macos.webp"
+        }
+      }
+    },
+    "floatem-app-icon": {
+      "source": "floatem-app-icon.png",
+      "thumbnail": "/resources/optimized/floatem-app-icon-thumb.webp",
+      "preview": "/resources/optimized/floatem-app-icon.webp",
+      "formats": {
+        "webp": {
+          "thumbnail": "/resources/optimized/floatem-app-icon-thumb.webp",
+          "preview": "/resources/optimized/floatem-app-icon.webp"
+        }
+      }
+    },
+    "images/01-经典色": {
+      "source": "images/01-经典色.png",
+      "thumbnail": "/resources/optimized/images/01-经典色-thumb.webp",
+      "preview": "/resources/optimized/images/01-经典色.webp",
+      "formats": {
+        "webp": {
+          "thumbnail": "/resources/optimized/images/01-经典色-thumb.webp",
+          "preview": "/resources/optimized/images/01-经典色.webp"
+        }
+      }
+    },
+    "images/02-浮光": {
+      "source": "images/02-浮光.png",
+      "thumbnail": "/resources/optimized/images/02-浮光-thumb.webp",
+      "preview": "/resources/optimized/images/02-浮光.webp",
+      "formats": {
+        "webp": {
+          "thumbnail": "/resources/optimized/images/02-浮光-thumb.webp",
+          "preview": "/resources/optimized/images/02-浮光.webp"
+        }
+      }
+    },
+    "images/03-梅": {
+      "source": "images/03-梅.png",
+      "thumbnail": "/resources/optimized/images/03-梅-thumb.webp",
+      "preview": "/resources/optimized/images/03-梅.webp",
+      "formats": {
+        "webp": {
+          "thumbnail": "/resources/optimized/images/03-梅-thumb.webp",
+          "preview": "/resources/optimized/images/03-梅.webp"
+        }
+      }
+    },
+    "images/04-兰": {
+      "source": "images/04-兰.png",
+      "thumbnail": "/resources/optimized/images/04-兰-thumb.webp",
+      "preview": "/resources/optimized/images/04-兰.webp",
+      "formats": {
+        "webp": {
+          "thumbnail": "/resources/optimized/images/04-兰-thumb.webp",
+          "preview": "/resources/optimized/images/04-兰.webp"
+        }
+      }
+    },
+    "images/05-竹": {
+      "source": "images/05-竹.png",
+      "thumbnail": "/resources/optimized/images/05-竹-thumb.webp",
+      "preview": "/resources/optimized/images/05-竹.webp",
+      "formats": {
+        "webp": {
+          "thumbnail": "/resources/optimized/images/05-竹-thumb.webp",
+          "preview": "/resources/optimized/images/05-竹.webp"
+        }
+      }
+    },
+    "images/06-菊": {
+      "source": "images/06-菊.png",
+      "thumbnail": "/resources/optimized/images/06-菊-thumb.webp",
+      "preview": "/resources/optimized/images/06-菊.webp",
+      "formats": {
+        "webp": {
+          "thumbnail": "/resources/optimized/images/06-菊-thumb.webp",
+          "preview": "/resources/optimized/images/06-菊.webp"
+        }
+      }
+    },
+    "images/07-悬浮主窗口-视频工作": {
+      "source": "images/07-悬浮主窗口-视频工作.png",
+      "thumbnail": "/resources/optimized/images/07-悬浮主窗口-视频工作-thumb.webp",
+      "preview": "/resources/optimized/images/07-悬浮主窗口-视频工作.webp",
+      "formats": {
+        "webp": {
+          "thumbnail": "/resources/optimized/images/07-悬浮主窗口-视频工作-thumb.webp",
+          "preview": "/resources/optimized/images/07-悬浮主窗口-视频工作.webp"
+        }
+      }
+    },
+    "images/08-多卡片悬浮-代码工作": {
+      "source": "images/08-多卡片悬浮-代码工作.png",
+      "thumbnail": "/resources/optimized/images/08-多卡片悬浮-代码工作-thumb.webp",
+      "preview": "/resources/optimized/images/08-多卡片悬浮-代码工作.webp",
+      "formats": {
+        "webp": {
+          "thumbnail": "/resources/optimized/images/08-多卡片悬浮-代码工作-thumb.webp",
+          "preview": "/resources/optimized/images/08-多卡片悬浮-代码工作.webp"
+        }
+      }
+    },
+    "images/09-桌面固定-彩色便签": {
+      "source": "images/09-桌面固定-彩色便签.png",
+      "thumbnail": "/resources/optimized/images/09-桌面固定-彩色便签-thumb.webp",
+      "preview": "/resources/optimized/images/09-桌面固定-彩色便签.webp",
+      "formats": {
+        "webp": {
+          "thumbnail": "/resources/optimized/images/09-桌面固定-彩色便签-thumb.webp",
+          "preview": "/resources/optimized/images/09-桌面固定-彩色便签.webp"
+        }
+      }
+    },
+    "images/10-待办与提醒": {
+      "source": "images/10-待办与提醒.png",
+      "thumbnail": "/resources/optimized/images/10-待办与提醒-thumb.webp",
+      "preview": "/resources/optimized/images/10-待办与提醒.webp",
+      "formats": {
+        "webp": {
+          "thumbnail": "/resources/optimized/images/10-待办与提醒-thumb.webp",
+          "preview": "/resources/optimized/images/10-待办与提醒.webp"
+        }
+      }
+    },
+    "images/app-icon": {
+      "source": "images/app-icon.png",
+      "thumbnail": "/resources/optimized/images/app-icon-thumb.webp",
+      "preview": "/resources/optimized/images/app-icon.webp",
+      "formats": {
+        "webp": {
+          "thumbnail": "/resources/optimized/images/app-icon-thumb.webp",
+          "preview": "/resources/optimized/images/app-icon.webp"
+        }
+      }
+    },
+    "images/app-store/desktop": {
+      "source": "images/app-store/desktop.png",
+      "thumbnail": "/resources/optimized/images/app-store/desktop-thumb.webp",
+      "preview": "/resources/optimized/images/app-store/desktop.webp",
+      "formats": {
+        "webp": {
+          "thumbnail": "/resources/optimized/images/app-store/desktop-thumb.webp",
+          "preview": "/resources/optimized/images/app-store/desktop.webp"
+        }
+      }
+    },
+    "images/app-store/floating": {
+      "source": "images/app-store/floating.png",
+      "thumbnail": "/resources/optimized/images/app-store/floating-thumb.webp",
+      "preview": "/resources/optimized/images/app-store/floating.webp",
+      "formats": {
+        "webp": {
+          "thumbnail": "/resources/optimized/images/app-store/floating-thumb.webp",
+          "preview": "/resources/optimized/images/app-store/floating.webp"
+        }
+      }
+    },
+    "images/app-store/guide": {
+      "source": "images/app-store/guide.png",
+      "thumbnail": "/resources/optimized/images/app-store/guide-thumb.webp",
+      "preview": "/resources/optimized/images/app-store/guide.webp",
+      "formats": {
+        "webp": {
+          "thumbnail": "/resources/optimized/images/app-store/guide-thumb.webp",
+          "preview": "/resources/optimized/images/app-store/guide.webp"
+        }
+      }
+    },
+    "images/app-store/notes": {
+      "source": "images/app-store/notes.png",
+      "thumbnail": "/resources/optimized/images/app-store/notes-thumb.webp",
+      "preview": "/resources/optimized/images/app-store/notes.webp",
+      "formats": {
+        "webp": {
+          "thumbnail": "/resources/optimized/images/app-store/notes-thumb.webp",
+          "preview": "/resources/optimized/images/app-store/notes.webp"
+        }
+      }
+    },
+    "images/app-store/tasks": {
+      "source": "images/app-store/tasks.png",
+      "thumbnail": "/resources/optimized/images/app-store/tasks-thumb.webp",
+      "preview": "/resources/optimized/images/app-store/tasks.webp",
+      "formats": {
+        "webp": {
+          "thumbnail": "/resources/optimized/images/app-store/tasks-thumb.webp",
+          "preview": "/resources/optimized/images/app-store/tasks.webp"
+        }
+      }
+    },
+    "images/app-store/themes": {
+      "source": "images/app-store/themes.png",
+      "thumbnail": "/resources/optimized/images/app-store/themes-thumb.webp",
+      "preview": "/resources/optimized/images/app-store/themes.webp",
+      "formats": {
+        "webp": {
+          "thumbnail": "/resources/optimized/images/app-store/themes-thumb.webp",
+          "preview": "/resources/optimized/images/app-store/themes.webp"
+        }
+      }
+    },
+    "images/floatem-watercolor-botanical": {
+      "source": "images/floatem-watercolor-botanical.png",
+      "thumbnail": "/resources/optimized/images/floatem-watercolor-botanical-thumb.webp",
+      "preview": "/resources/optimized/images/floatem-watercolor-botanical.webp",
+      "formats": {
+        "webp": {
+          "thumbnail": "/resources/optimized/images/floatem-watercolor-botanical-thumb.webp",
+          "preview": "/resources/optimized/images/floatem-watercolor-botanical.webp"
+        }
+      }
+    },
+    "images/home-hero-floatem-workspaces": {
+      "source": "images/home-hero-floatem-workspaces.png",
+      "thumbnail": "/resources/optimized/images/home-hero-floatem-workspaces-thumb.webp",
+      "preview": "/resources/optimized/images/home-hero-floatem-workspaces.webp",
+      "formats": {
+        "webp": {
+          "thumbnail": "/resources/optimized/images/home-hero-floatem-workspaces-thumb.webp",
+          "preview": "/resources/optimized/images/home-hero-floatem-workspaces.webp"
+        }
+      }
+    }
+  }
+}
