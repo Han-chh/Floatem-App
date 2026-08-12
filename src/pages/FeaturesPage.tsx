@@ -2,15 +2,16 @@ import { Arrow } from '../components/Icons'
 import { OptimizedImage } from '../components/OptimizedImage'
 import { OptimizedVideo } from '../components/OptimizedVideo'
 import { Reveal } from '../components/Reveal'
-import { screenshots } from '../content/site'
+import { screenshots, type Locale } from '../content/site'
 import { zh } from '../locales/zh'
 import { PageIntro } from './PageIntro'
 import { featureImages, featureVideos } from './featuresMedia'
 
 type Translation = typeof zh
 
-export default function FeaturesPage({ t, go }: { t: Translation, go: (page: 'download') => void }) {
-  const images = [screenshots.appStore.floating, screenshots.appStore.desktop, screenshots.appStore.tasks, screenshots.appStore.guide, screenshots.appStore.themes]
+export default function FeaturesPage({ t, locale, go }: { t: Translation, locale: Locale, go: (page: 'download') => void }) {
+  const localizedScreenshots = screenshots.appStore[locale]
+  const images = [localizedScreenshots.floating, localizedScreenshots.desktop, localizedScreenshots.tasks, localizedScreenshots.guide, localizedScreenshots.themes]
   const videos = ['/videos/floatem-card-float-demo.mp4', '/videos/floatem-capture-demo-safe.mp4', '/videos/floatem-reminder-demo.mp4', '/videos/floatem-guide-onboarding-demo.mp4']
   return <PageIntro label={t.features.label} title={t.features.title} intro={t.features.intro}>
     <section className="quiet-cta"><p>Don't lose thoughts, Float 'em.</p><button className="button filled" onClick={() => go('download')}>{t.common.get}<Arrow /></button></section>

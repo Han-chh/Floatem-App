@@ -33,11 +33,21 @@ export const screenshots = {
   desktop: '/images/09-桌面固定-彩色便签.png',
   todo: '/images/10-待办与提醒.png',
   appStore: {
-    notes: '/images/app-store/notes.png',
-    floating: '/images/app-store/floating.png',
-    tasks: '/images/app-store/tasks.png',
-    desktop: '/images/app-store/desktop.png',
-    themes: '/images/app-store/themes.png',
-    guide: '/images/app-store/guide.png',
+    zh: {
+      notes: '/images/app-store/notes.png',
+      floating: '/images/app-store/floating.png',
+      tasks: '/images/app-store/tasks.png',
+      desktop: '/images/app-store/desktop.png',
+      themes: '/images/app-store/themes.png',
+      guide: '/images/app-store/guide.png',
+    },
+    en: {
+      notes: '/images/app-store/en/notes.png',
+      floating: '/images/app-store/en/floating.png',
+      tasks: '/images/app-store/en/tasks.png',
+      desktop: '/images/app-store/en/desktop.png',
+      themes: '/images/app-store/en/themes.png',
+      guide: '/images/app-store/en/guide.png',
+    },
   },
 }

@@ -10,6 +10,12 @@ export const featureImages: Record<string, OptimizedImageAsset> = {
   '/images/app-store/tasks.png': image(new URL('../../resources/optimized/images/app-store/tasks.webp', import.meta.url).href, new URL('../../resources/optimized/images/app-store/tasks-thumb.webp', import.meta.url).href, '/images/app-store/tasks.png'),
   '/images/app-store/guide.png': image(new URL('../../resources/optimized/images/app-store/guide.webp', import.meta.url).href, new URL('../../resources/optimized/images/app-store/guide-thumb.webp', import.meta.url).href, '/images/app-store/guide.png'),
   '/images/app-store/themes.png': image(new URL('../../resources/optimized/images/app-store/themes.webp', import.meta.url).href, new URL('../../resources/optimized/images/app-store/themes-thumb.webp', import.meta.url).href, '/images/app-store/themes.png'),
+  '/images/app-store/en/notes.png': image(new URL('../../resources/optimized/images/app-store/en/notes.webp', import.meta.url).href, new URL('../../resources/optimized/images/app-store/en/notes-thumb.webp', import.meta.url).href, '/images/app-store/en/notes.png'),
+  '/images/app-store/en/floating.png': image(new URL('../../resources/optimized/images/app-store/en/floating.webp', import.meta.url).href, new URL('../../resources/optimized/images/app-store/en/floating-thumb.webp', import.meta.url).href, '/images/app-store/en/floating.png'),
+  '/images/app-store/en/tasks.png': image(new URL('../../resources/optimized/images/app-store/en/tasks.webp', import.meta.url).href, new URL('../../resources/optimized/images/app-store/en/tasks-thumb.webp', import.meta.url).href, '/images/app-store/en/tasks.png'),
+  '/images/app-store/en/desktop.png': image(new URL('../../resources/optimized/images/app-store/en/desktop.webp', import.meta.url).href, new URL('../../resources/optimized/images/app-store/en/desktop-thumb.webp', import.meta.url).href, '/images/app-store/en/desktop.png'),
+  '/images/app-store/en/themes.png': image(new URL('../../resources/optimized/images/app-store/en/themes.webp', import.meta.url).href, new URL('../../resources/optimized/images/app-store/en/themes-thumb.webp', import.meta.url).href, '/images/app-store/en/themes.png'),
+  '/images/app-store/en/guide.png': image(new URL('../../resources/optimized/images/app-store/en/guide.webp', import.meta.url).href, new URL('../../resources/optimized/images/app-store/en/guide-thumb.webp', import.meta.url).href, '/images/app-store/en/guide.png'),
 }
 
 export const featureVideos = {

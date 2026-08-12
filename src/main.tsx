@@ -48,7 +48,7 @@ function App() {
     <Header t={t} page={page} locale={locale} setLocale={setLocale} go={go} menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
     <Suspense fallback={<main className="page-enter page-loading" aria-live="polite" aria-label="Loading page" />}>
       <main key={page} className="page-enter">
-        {page === 'features' && <FeaturesPage t={t} go={go} />}
+        {page === 'features' && <FeaturesPage t={t} locale={locale} go={go} />}
         {page === 'download' && <DownloadPage t={t} locale={locale} />}
         {page === 'support' && <SupportPage t={t} />}
         {page === 'privacy' && <PrivacyPage t={t} />}
