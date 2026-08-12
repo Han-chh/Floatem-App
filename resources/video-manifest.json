@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-09T02:24:37.506Z",
+  "generatedAt": "2026-08-12T03:58:23.864Z",
   "videos": {
     "floatem-capture-demo-safe": {
       "source": "floatem-capture-demo-safe.mp4",
@@ -12,6 +12,12 @@
       "webm": "/resources/optimized/videos/floatem-card-float-demo.webm",
       "mp4": "/resources/optimized/videos/floatem-card-float-demo.mp4",
       "poster": "/resources/optimized/videos/floatem-card-float-demo-poster.webp"
+    },
+    "floatem-guide-onboarding-demo": {
+      "source": "floatem-guide-onboarding-demo.mp4",
+      "webm": "/resources/optimized/videos/floatem-guide-onboarding-demo.webm",
+      "mp4": "/resources/optimized/videos/floatem-guide-onboarding-demo.mp4",
+      "poster": "/resources/optimized/videos/floatem-guide-onboarding-demo-poster.webp"
     },
     "floatem-reminder-demo": {
       "source": "floatem-reminder-demo.mp4",

@@ -35,8 +35,7 @@ export const featureVideos = {
     fallbackSrc: new URL('../../resources/optimized/videos/floatem-reminder-demo.mp4', import.meta.url).href,
   },
   '/videos/floatem-guide-onboarding-demo.mp4': {
-    src: new URL('../../resources/optimized/videos/floatem-guide-onboarding-demo.mp4', import.meta.url).href,
-    sourceType: 'video/mp4' as const,
+    src: new URL('../../resources/optimized/videos/floatem-guide-onboarding-demo.webm', import.meta.url).href,
     poster: new URL('../../resources/optimized/videos/floatem-guide-onboarding-demo-poster.webp', import.meta.url).href,
     fallbackSrc: new URL('../../resources/optimized/videos/floatem-guide-onboarding-demo.mp4', import.meta.url).href,
   },
