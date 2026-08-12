@@ -4,7 +4,7 @@ export type Locale = 'zh' | 'en'
 export const release = {
   version: '1.0.8',
   date: '2026.08.07',
-  macDownload: 'https://apps.apple.com/',
+  macDownload: 'https://apps.apple.com/app/id6794372820',
   windowsDownload: '',
   macRequirement: { zh: 'macOS 14.0 或更高版本', en: 'macOS 14.0 or later' },
   windowsRequirement: 'Windows 10 / 11',
