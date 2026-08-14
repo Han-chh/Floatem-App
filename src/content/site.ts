@@ -2,16 +2,16 @@ export type Locale = 'zh' | 'en'
 
 /** Update this object for every release. Links can be App Store, GitHub Release, or a direct file. */
 export const release = {
-  version: '1.0.8',
-  date: '2026.08.07',
+  version: '1.0.10',
+  date: '2026.08.14',
   macDownload: 'https://apps.apple.com/app/id6794372820',
   windowsDownload: '',
   macRequirement: { zh: 'macOS 14.0 或更高版本', en: 'macOS 14.0 or later' },
   windowsRequirement: 'Windows 10 / 11',
   notes: [
-    { zh: '全新的引导式教程，让第一次相遇自然发生。', en: 'A guided first-run experience for a gentler beginning.' },
-    { zh: '优化多卡片悬浮时的专注体验。', en: 'A more focused experience when several cards are floating.' },
-    { zh: '修复若干细微而重要的交互问题。', en: 'A collection of small but meaningful interaction fixes.' },
+    { zh: '桌面置顶待办在重新打开 Floatem 后完整恢复，所有操作按钮保持可见可用。', en: 'Desktop-pinned todos now restore with every action visible and ready after reopening Floatem.' },
+    { zh: '优化桌面图钉的选中样式，只突出图钉本身。', en: 'The selected desktop pin now highlights only the pin itself.' },
+    { zh: '新增系统语言提示，帮助中英文界面与当前 Mac 保持一致。', en: 'A new system-language prompt helps keep the interface aligned with your Mac.' },
   ],
 }
 
