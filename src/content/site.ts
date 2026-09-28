@@ -2,16 +2,17 @@ export type Locale = 'zh' | 'en'
 
 /** Update this object for every release. Links can be App Store, GitHub Release, or a direct file. */
 export const release = {
-  version: '1.0.10',
-  date: '2026.08.14',
+  version: '1.1.0',
+  date: '2026.09.28',
   macDownload: 'https://apps.apple.com/app/id6794372820',
   windowsDownload: '',
   macRequirement: { zh: 'macOS 14.0 或更高版本', en: 'macOS 14.0 or later' },
   windowsRequirement: 'Windows 10 / 11',
   notes: [
-    { zh: '桌面置顶待办在重新打开 Floatem 后完整恢复，所有操作按钮保持可见可用。', en: 'Desktop-pinned todos now restore with every action visible and ready after reopening Floatem.' },
-    { zh: '优化桌面图钉的选中样式，只突出图钉本身。', en: 'The selected desktop pin now highlights only the pin itself.' },
-    { zh: '新增系统语言提示，帮助中英文界面与当前 Mac 保持一致。', en: 'A new system-language prompt helps keep the interface aligned with your Mac.' },
+    { zh: 'Floatem 现在常驻菜单栏且不占用 Dock；可随时显示、隐藏、重新加载或退出。', en: 'Floatem now lives in the menu bar without occupying the Dock, with Show, Hide, Reload, and Quit always available.' },
+    { zh: '后台快捷键服务会自动修复旧注册；应用被移除后会释放快捷键并退出。', en: 'The background shortcut service now repairs stale registrations and releases its shortcut when the app is removed.' },
+    { zh: '复制和粘贴便签内容时会保留受支持的粗体、斜体、下划线与文字颜色。', en: 'Note copy and paste now preserve supported bold, italic, underline, and text-color formatting.' },
+    { zh: '长文本获得焦点时，富文本工具栏保持稳定；应用内指引也已完整更新。', en: 'The rich-text toolbar stays stable when long notes gain focus, and the in-app guidance now reflects every current workflow.' },
   ],
 }
 
