@@ -22,7 +22,7 @@ function route(): Page {
 }
 
 function App() {
-  const [locale, setLocale] = useState<Locale>(() => (localStorage.getItem('floatem-language') as Locale) || 'zh')
+  const [locale, setLocale] = useState<Locale>(() => (localStorage.getItem('floatem-language') as Locale) || 'en')
   const [page, setPage] = useState<Page>(route)
   const [menuOpen, setMenuOpen] = useState(false)
   const t = locale === 'zh' ? zh : en

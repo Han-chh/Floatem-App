@@ -25,7 +25,7 @@ export const zh = {
   },
   download: { label: '下载 Floatem', title: '下载后，\n马上开始记录。', intro: 'Floatem 已为你的日常桌面准备好。选择平台后即可开始。', mac: '在 Mac App Store 获取', windows: 'Windows 版本即将到来', coming: '即将推出', current: '当前版本', update: '本次更新', requirement: '系统要求' },
   support: {
-    label: '技术支持', title: '需要帮忙时，\n我们在这里。', intro: '遇到问题、有功能建议，或想了解隐私设置，都可以直接来信。', contact: '联系 Floatem', contactTitle: '告诉我们你正在遇到什么问题。', contactHint: '点击邮箱，即可新建邮件。', contactTopics: ['使用问题', '功能建议', '隐私咨询'], faq: '常见问题',
+    label: '技术支持', title: '需要帮忙时，\n我们随时在。', intro: '遇到问题、有功能建议，或想了解隐私设置，都可以直接来信。', contact: '联系 Floatem', contactTitle: '告诉我们你正在遇到什么问题。', contactHint: '点击邮箱，即可新建邮件。', contactTopics: ['使用问题', '功能建议', '隐私咨询'], faq: '常见问题',
     questions: [
       ['如何报告问题？', '请在邮件中附上设备型号、系统版本、Floatem 版本，以及可以复现问题的简短步骤。'],
       ['如何查看当前版本？', '在 Floatem 的“关于”页面可以看到当前版本号。'],
