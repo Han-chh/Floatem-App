@@ -47,7 +47,7 @@ function App() {
   return <div className="app-shell" style={{ '--botanical-image': `url("${botanicalImage}")` } as CSSProperties}>
     <Header t={t} page={page} locale={locale} setLocale={setLocale} go={go} menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
     <Suspense fallback={<main className="page-enter page-loading" aria-live="polite" aria-label="Loading page" />}>
-      <main key={page} className="page-enter">
+      <main key={page} className={`page-enter page-${page}`}>
         {page === 'features' && <FeaturesPage t={t} locale={locale} go={go} />}
         {page === 'download' && <DownloadPage t={t} locale={locale} />}
         {page === 'support' && <SupportPage t={t} />}
@@ -60,8 +60,8 @@ function App() {
 
 function Header({ t, page, locale, setLocale, go, menuOpen, setMenuOpen }: { t: Translation, page: Page, locale: Locale, setLocale: (locale: Locale) => void, go: (page: Page) => void, menuOpen: boolean, setMenuOpen: (open: boolean) => void }) {
   const nav = ['features', 'download', 'support', 'privacy'] as const
-  return <header className="site-header">
-    <button className="brand" onClick={() => go('features')} aria-label="Floatem features"><OptimizedImage {...appIconImage} className="app-icon" wrapperClassName="app-icon-frame" sizes="27px" alt="" priority /><span>Floatem</span></button>
+  return <header className={`site-header site-header-${page}`}>
+    <button className="brand" onClick={() => go('features')} aria-label="Floatem features"><OptimizedImage {...appIconImage} className="app-icon" wrapperClassName="app-icon-frame" sizes="27px" alt="" priority /><span>Floatem</span><small className="brand-platform">macOS only</small></button>
     <nav className={menuOpen ? 'open' : ''} aria-label="Main navigation">
       {nav.map((item) => <button key={item} className={page === item ? 'active' : ''} onClick={() => go(item)}>{t.nav[item]}</button>)}
       <button className="language mobile-language" onClick={() => setLocale(locale === 'zh' ? 'en' : 'zh')}>{locale === 'zh' ? 'EN' : '中文'}</button>
