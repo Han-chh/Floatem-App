@@ -5,31 +5,36 @@
       "source": "floatem-capture-demo-safe.mp4",
       "webm": "/resources/optimized/videos/floatem-capture-demo-safe.webm",
       "mp4": "/resources/optimized/videos/floatem-capture-demo-safe.mp4",
-      "poster": "/resources/optimized/videos/floatem-capture-demo-safe-poster.webp"
+      "poster": "/resources/optimized/videos/floatem-capture-demo-safe-poster.webp",
+      "posterMedium": "/resources/optimized/videos/floatem-capture-demo-safe-poster-medium.webp"
     },
     "floatem-card-float-demo": {
       "source": "floatem-card-float-demo.mp4",
       "webm": "/resources/optimized/videos/floatem-card-float-demo.webm",
       "mp4": "/resources/optimized/videos/floatem-card-float-demo.mp4",
-      "poster": "/resources/optimized/videos/floatem-card-float-demo-poster.webp"
+      "poster": "/resources/optimized/videos/floatem-card-float-demo-poster.webp",
+      "posterMedium": "/resources/optimized/videos/floatem-card-float-demo-poster-medium.webp"
     },
     "floatem-guide-onboarding-demo": {
       "source": "floatem-guide-onboarding-demo.mp4",
       "webm": "/resources/optimized/videos/floatem-guide-onboarding-demo.webm",
       "mp4": "/resources/optimized/videos/floatem-guide-onboarding-demo.mp4",
-      "poster": "/resources/optimized/videos/floatem-guide-onboarding-demo-poster.webp"
+      "poster": "/resources/optimized/videos/floatem-guide-onboarding-demo-poster.webp",
+      "posterMedium": "/resources/optimized/videos/floatem-guide-onboarding-demo-poster-medium.webp"
     },
     "floatem-reminder-demo": {
       "source": "floatem-reminder-demo.mp4",
       "webm": "/resources/optimized/videos/floatem-reminder-demo.webm",
       "mp4": "/resources/optimized/videos/floatem-reminder-demo.mp4",
-      "poster": "/resources/optimized/videos/floatem-reminder-demo-poster.webp"
+      "poster": "/resources/optimized/videos/floatem-reminder-demo-poster.webp",
+      "posterMedium": "/resources/optimized/videos/floatem-reminder-demo-poster-medium.webp"
     },
     "floatem-todo-demo": {
       "source": "floatem-todo-demo.mp4",
       "webm": "/resources/optimized/videos/floatem-todo-demo.webm",
       "mp4": "/resources/optimized/videos/floatem-todo-demo.mp4",
-      "poster": "/resources/optimized/videos/floatem-todo-demo-poster.webp"
+      "poster": "/resources/optimized/videos/floatem-todo-demo-poster.webp",
+      "posterMedium": "/resources/optimized/videos/floatem-todo-demo-poster-medium.webp"
     }
   }
 }

@@ -26,6 +26,8 @@ const defaults = {
   formats: ['webp'],
   thumbnailWidth: 320,
   thumbnailQuality: 70,
+  mediumWidth: 720,
+  mediumQuality: 76,
   previewWidth: 1200,
   previewQuality: 80,
   thumbnailsOnly: false,
@@ -114,6 +116,16 @@ function optimize(source, relativeSource, options) {
     result[format] = { thumbnail: outputUrl(thumbnail, options) }
 
     if (!options.thumbnailsOnly) {
+      const medium = `${stem}-medium.${format}`
+      runImageMagick([
+        source,
+        '-auto-orient',
+        '-resize', `${options.mediumWidth}x${options.mediumWidth}>`,
+        ...formatArguments(format, options.mediumQuality),
+        medium,
+      ])
+      result[format].medium = outputUrl(medium, options)
+
       const preview = `${stem}.${format}`
       runImageMagick([
         source,
@@ -144,6 +156,7 @@ function main() {
     images[manifestKey(sourceRelativePath)] = {
       source: sourceRelativePath.split(sep).join('/'),
       thumbnail: webp.thumbnail,
+      medium: webp.medium || null,
       preview: webp.preview || null,
       formats,
     }

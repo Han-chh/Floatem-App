@@ -4,7 +4,10 @@
   const SETTINGS_KEY = 'floatem.settings';
   const WEBSITE_LANGUAGE_KEY = 'floatplane.website-language';
   const COOKIE_PREFIX = 'floatplane_app_demo_';
-  const params = new URLSearchParams(window.location.search);
+  const embeddedRuntimeUrl = document.querySelector('meta[name="floatem-webview-url"]')?.content;
+  const runtimeUrl = new URL(embeddedRuntimeUrl || window.location.href, window.location.href);
+  const params = runtimeUrl.searchParams;
+  const runtimeOrigin = runtimeUrl.origin;
   const requestedLanguage = params.get('language') === 'zh' ? 'zh-CN' : 'en';
   let lastPointer = { x: 0, y: 0, screenX: 0, screenY: 0 };
   let activeDragPreview = null;
@@ -154,7 +157,7 @@
     return { notes, todos };
   };
 
-  const post = (type, detail) => window.parent.postMessage({ source: 'floatplane-web-demo', type, detail }, window.location.origin);
+  const post = (type, detail) => window.parent.postMessage({ source: 'floatplane-web-demo', type, detail }, runtimeOrigin);
   const settings = () => read(SETTINGS_KEY, {});
   const isSandboxFullscreen = () => {
     try {

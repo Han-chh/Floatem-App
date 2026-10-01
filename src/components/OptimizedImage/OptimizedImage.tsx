@@ -5,6 +5,8 @@ type OptimizedImageProps = Omit<ImgHTMLAttributes<HTMLImageElement>, 'src' | 'sr
   src: string
   /** Small WebP derivative displayed while the preview loads. */
   thumbnail: string
+  /** Medium WebP derivative for high-density mobile and compact desktop layouts. */
+  medium?: string
   /** Original local asset used only if the optimized source cannot be displayed. */
   fallback: string
   sizes: string
@@ -20,6 +22,7 @@ type OptimizedImageProps = Omit<ImgHTMLAttributes<HTMLImageElement>, 'src' | 'sr
 export function OptimizedImage({
   src,
   thumbnail,
+  medium,
   fallback,
   sizes,
   priority = false,
@@ -37,7 +40,7 @@ export function OptimizedImage({
 
   return <span className={`optimized-image ${loaded ? 'is-loaded' : ''} ${usingFallback ? 'is-fallback' : ''} ${wrapperClassName}`.trim()} style={placeholderStyle}>
     <picture>
-      {!usingFallback && <source type="image/webp" srcSet={`${thumbnail} 320w, ${src} 1200w`} sizes={sizes} />}
+      {!usingFallback && <source type="image/webp" srcSet={`${thumbnail} 320w, ${medium ? `${medium} 720w, ` : ''}${src} 1200w`} sizes={sizes} />}
       <img
         {...imageProps}
         className={className}

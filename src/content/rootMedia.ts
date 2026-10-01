@@ -1,4 +1,4 @@
-export type OptimizedImageAsset = { src: string, thumbnail: string, fallback: string }
+export type OptimizedImageAsset = { src: string, thumbnail: string, medium?: string, fallback: string }
 
 export const appIconImage: OptimizedImageAsset = {
   src: new URL('../../resources/optimized/floatem-app-icon-macos.webp', import.meta.url).href,

@@ -130,7 +130,12 @@ export function FloatplaneDemo({ siteLocale, onCollapse }: { siteLocale: DemoLan
   const reminderTimersRef = useRef(new Map<string, number>())
   const tr = (zh: string, en: string) => siteLocale === 'zh' ? zh : en
 
-  const mainSource = useMemo(() => `${WEBVIEW_PATH}/index.html?language=${siteLocale}&revision=${WEBVIEW_REVISION}`, [siteLocale])
+  const mainSource = useMemo(() => new URL(`${WEBVIEW_PATH}/index.html?language=${siteLocale}&revision=${WEBVIEW_REVISION}`, window.location.href).href, [siteLocale])
+  const mainFrameDocument = useMemo(() => {
+    const webviewBase = new URL(`${WEBVIEW_PATH}/`, window.location.href).href
+    const runtimeUrl = mainSource.replaceAll('&', '&amp;').replaceAll('"', '&quot;')
+    return `<!doctype html><html lang="${siteLocale}"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="floatem-webview-url" content="${runtimeUrl}"><base href="${webviewBase}"><title>Floatem</title><script src="./bridge.js"><\/script><script type="module" crossorigin src="./assets/main-30_CJPq1.js"><\/script><link rel="stylesheet" crossorigin href="./assets/main-BnIUVb_z.css"></head><body><div id="root"></div></body></html>`
+  }, [mainSource, siteLocale])
   const dragPreviewSource = useMemo(() => `${WEBVIEW_PATH}/index.html?mode=drag-preview&language=${siteLocale}&revision=${WEBVIEW_REVISION}`, [siteLocale])
   const systemClock = useMemo(() => {
     const clockPreference = new Intl.DateTimeFormat(undefined, { hour: 'numeric' }).resolvedOptions()
@@ -1008,7 +1013,7 @@ export function FloatplaneDemo({ siteLocale, onCollapse }: { siteLocale: DemoLan
         <iframe
           key={`${iframeKey}-${siteLocale}`}
           ref={mainFrameRef}
-          src={mainSource}
+          srcDoc={mainFrameDocument}
           title={tr('Floatem 互动网页版', 'Floatem interactive web demo')}
           onLoad={() => {
             syncFloatingState(floatingCards)

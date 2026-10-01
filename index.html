@@ -7,26 +7,7 @@
     <meta name="description" content="Floatem — keep thoughts in sight with floating notes and tasks for macOS and Windows." />
     <link rel="icon" type="image/png" sizes="64x64" href="./floatem-app-icon-64.png" />
     <link rel="apple-touch-icon" sizes="192x192" href="./floatem-app-icon-192.png" />
-    <script>
-      (() => {
-        const webviewAssets = new URL('./floatem-webview/assets/', window.location.href)
-        const webviewStyle = document.createElement('link')
-        webviewStyle.rel = 'prefetch'
-        webviewStyle.as = 'style'
-        webviewStyle.href = new URL('main-BnIUVb_z.css', webviewAssets).href
-        document.head.append(webviewStyle)
-        const webviewModule = document.createElement('link')
-        webviewModule.rel = 'modulepreload'
-        webviewModule.href = new URL('main-30_CJPq1.js', webviewAssets).href
-        webviewModule.fetchPriority = 'high'
-        document.head.append(webviewModule)
-        const webviewDocument = document.createElement('link')
-        const language = window.localStorage.getItem('floatem-language') === 'zh' ? 'zh' : 'en'
-        webviewDocument.rel = 'prefetch'
-        webviewDocument.href = new URL(`../index.html?language=${language}&revision=20261001-todo-reminders-v2`, webviewAssets).href
-        document.head.append(webviewDocument)
-      })()
-    </script>
+    <link rel="preload" as="image" type="image/webp" href="./resources/optimized/images/floatem-watercolor-botanical.webp" fetchpriority="high" />
     <title>Floatem · Let’s Float’em</title>
   </head>
   <body>

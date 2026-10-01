@@ -53,6 +53,7 @@ function main() {
     const webm = join(output, `${relativeWithoutExtension}.webm`)
     const mp4 = join(output, `${relativeWithoutExtension}.mp4`)
     const poster = join(output, `${relativeWithoutExtension}-poster.webp`)
+    const posterMedium = join(output, `${relativeWithoutExtension}-poster-medium.webp`)
     const temporaryPoster = join(output, `${relativeWithoutExtension}-poster.png`)
     mkdirSync(dirname(webm), { recursive: true })
 
@@ -63,6 +64,7 @@ function main() {
     // WebP poster.
     run('ffmpeg', ['-y', '-ss', '00:00:01', '-i', source, '-frames:v', '1', '-vf', "scale='min(1200,iw)':-2", '-c:v', 'png', temporaryPoster])
     run('magick', [temporaryPoster, '-quality', '75', '-define', 'webp:method=6', poster])
+    run('magick', [temporaryPoster, '-resize', '720x720>', '-quality', '72', '-define', 'webp:method=6', posterMedium])
     rmSync(temporaryPoster, { force: true })
 
     const key = relativeWithoutExtension.split(sep).join('/')
@@ -71,6 +73,7 @@ function main() {
       webm: `/${relative(websiteRoot, webm).split(sep).join('/')}`,
       mp4: `/${relative(websiteRoot, mp4).split(sep).join('/')}`,
       poster: `/${relative(websiteRoot, poster).split(sep).join('/')}`,
+      posterMedium: `/${relative(websiteRoot, posterMedium).split(sep).join('/')}`,
     }
     console.log(`Optimized ${sourceRelativePath}`)
   }

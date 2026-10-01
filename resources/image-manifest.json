@@ -1,13 +1,15 @@
 {
-  "generatedAt": "2026-08-09T02:14:17.457Z",
+  "generatedAt": "2026-10-01T15:34:32.048Z",
   "images": {
     "floatem-app-icon-macos": {
       "source": "floatem-app-icon-macos.png",
       "thumbnail": "/resources/optimized/floatem-app-icon-macos-thumb.webp",
+      "medium": "/resources/optimized/floatem-app-icon-macos-medium.webp",
       "preview": "/resources/optimized/floatem-app-icon-macos.webp",
       "formats": {
         "webp": {
           "thumbnail": "/resources/optimized/floatem-app-icon-macos-thumb.webp",
+          "medium": "/resources/optimized/floatem-app-icon-macos-medium.webp",
           "preview": "/resources/optimized/floatem-app-icon-macos.webp"
         }
       }
@@ -15,10 +17,12 @@
     "floatem-app-icon": {
       "source": "floatem-app-icon.png",
       "thumbnail": "/resources/optimized/floatem-app-icon-thumb.webp",
+      "medium": "/resources/optimized/floatem-app-icon-medium.webp",
       "preview": "/resources/optimized/floatem-app-icon.webp",
       "formats": {
         "webp": {
           "thumbnail": "/resources/optimized/floatem-app-icon-thumb.webp",
+          "medium": "/resources/optimized/floatem-app-icon-medium.webp",
           "preview": "/resources/optimized/floatem-app-icon.webp"
         }
       }
@@ -26,10 +30,12 @@
     "images/01-经典色": {
       "source": "images/01-经典色.png",
       "thumbnail": "/resources/optimized/images/01-经典色-thumb.webp",
+      "medium": "/resources/optimized/images/01-经典色-medium.webp",
       "preview": "/resources/optimized/images/01-经典色.webp",
       "formats": {
         "webp": {
           "thumbnail": "/resources/optimized/images/01-经典色-thumb.webp",
+          "medium": "/resources/optimized/images/01-经典色-medium.webp",
           "preview": "/resources/optimized/images/01-经典色.webp"
         }
       }
@@ -37,10 +43,12 @@
     "images/02-浮光": {
       "source": "images/02-浮光.png",
       "thumbnail": "/resources/optimized/images/02-浮光-thumb.webp",
+      "medium": "/resources/optimized/images/02-浮光-medium.webp",
       "preview": "/resources/optimized/images/02-浮光.webp",
       "formats": {
         "webp": {
           "thumbnail": "/resources/optimized/images/02-浮光-thumb.webp",
+          "medium": "/resources/optimized/images/02-浮光-medium.webp",
           "preview": "/resources/optimized/images/02-浮光.webp"
         }
       }
@@ -48,10 +56,12 @@
     "images/03-梅": {
       "source": "images/03-梅.png",
       "thumbnail": "/resources/optimized/images/03-梅-thumb.webp",
+      "medium": "/resources/optimized/images/03-梅-medium.webp",
       "preview": "/resources/optimized/images/03-梅.webp",
       "formats": {
         "webp": {
           "thumbnail": "/resources/optimized/images/03-梅-thumb.webp",
+          "medium": "/resources/optimized/images/03-梅-medium.webp",
           "preview": "/resources/optimized/images/03-梅.webp"
         }
       }
@@ -59,10 +69,12 @@
     "images/04-兰": {
       "source": "images/04-兰.png",
       "thumbnail": "/resources/optimized/images/04-兰-thumb.webp",
+      "medium": "/resources/optimized/images/04-兰-medium.webp",
       "preview": "/resources/optimized/images/04-兰.webp",
       "formats": {
         "webp": {
           "thumbnail": "/resources/optimized/images/04-兰-thumb.webp",
+          "medium": "/resources/optimized/images/04-兰-medium.webp",
           "preview": "/resources/optimized/images/04-兰.webp"
         }
       }
@@ -70,10 +82,12 @@
     "images/05-竹": {
       "source": "images/05-竹.png",
       "thumbnail": "/resources/optimized/images/05-竹-thumb.webp",
+      "medium": "/resources/optimized/images/05-竹-medium.webp",
       "preview": "/resources/optimized/images/05-竹.webp",
       "formats": {
         "webp": {
           "thumbnail": "/resources/optimized/images/05-竹-thumb.webp",
+          "medium": "/resources/optimized/images/05-竹-medium.webp",
           "preview": "/resources/optimized/images/05-竹.webp"
         }
       }
@@ -81,10 +95,12 @@
     "images/06-菊": {
       "source": "images/06-菊.png",
       "thumbnail": "/resources/optimized/images/06-菊-thumb.webp",
+      "medium": "/resources/optimized/images/06-菊-medium.webp",
       "preview": "/resources/optimized/images/06-菊.webp",
       "formats": {
         "webp": {
           "thumbnail": "/resources/optimized/images/06-菊-thumb.webp",
+          "medium": "/resources/optimized/images/06-菊-medium.webp",
           "preview": "/resources/optimized/images/06-菊.webp"
         }
       }
@@ -92,10 +108,12 @@
     "images/07-悬浮主窗口-视频工作": {
       "source": "images/07-悬浮主窗口-视频工作.png",
       "thumbnail": "/resources/optimized/images/07-悬浮主窗口-视频工作-thumb.webp",
+      "medium": "/resources/optimized/images/07-悬浮主窗口-视频工作-medium.webp",
       "preview": "/resources/optimized/images/07-悬浮主窗口-视频工作.webp",
       "formats": {
         "webp": {
           "thumbnail": "/resources/optimized/images/07-悬浮主窗口-视频工作-thumb.webp",
+          "medium": "/resources/optimized/images/07-悬浮主窗口-视频工作-medium.webp",
           "preview": "/resources/optimized/images/07-悬浮主窗口-视频工作.webp"
         }
       }
@@ -103,10 +121,12 @@
     "images/08-多卡片悬浮-代码工作": {
       "source": "images/08-多卡片悬浮-代码工作.png",
       "thumbnail": "/resources/optimized/images/08-多卡片悬浮-代码工作-thumb.webp",
+      "medium": "/resources/optimized/images/08-多卡片悬浮-代码工作-medium.webp",
       "preview": "/resources/optimized/images/08-多卡片悬浮-代码工作.webp",
       "formats": {
         "webp": {
           "thumbnail": "/resources/optimized/images/08-多卡片悬浮-代码工作-thumb.webp",
+          "medium": "/resources/optimized/images/08-多卡片悬浮-代码工作-medium.webp",
           "preview": "/resources/optimized/images/08-多卡片悬浮-代码工作.webp"
         }
       }
@@ -114,10 +134,12 @@
     "images/09-桌面固定-彩色便签": {
       "source": "images/09-桌面固定-彩色便签.png",
       "thumbnail": "/resources/optimized/images/09-桌面固定-彩色便签-thumb.webp",
+      "medium": "/resources/optimized/images/09-桌面固定-彩色便签-medium.webp",
       "preview": "/resources/optimized/images/09-桌面固定-彩色便签.webp",
       "formats": {
         "webp": {
           "thumbnail": "/resources/optimized/images/09-桌面固定-彩色便签-thumb.webp",
+          "medium": "/resources/optimized/images/09-桌面固定-彩色便签-medium.webp",
           "preview": "/resources/optimized/images/09-桌面固定-彩色便签.webp"
         }
       }
@@ -125,10 +147,12 @@
     "images/10-待办与提醒": {
       "source": "images/10-待办与提醒.png",
       "thumbnail": "/resources/optimized/images/10-待办与提醒-thumb.webp",
+      "medium": "/resources/optimized/images/10-待办与提醒-medium.webp",
       "preview": "/resources/optimized/images/10-待办与提醒.webp",
       "formats": {
         "webp": {
           "thumbnail": "/resources/optimized/images/10-待办与提醒-thumb.webp",
+          "medium": "/resources/optimized/images/10-待办与提醒-medium.webp",
           "preview": "/resources/optimized/images/10-待办与提醒.webp"
         }
       }
@@ -136,10 +160,12 @@
     "images/app-icon": {
       "source": "images/app-icon.png",
       "thumbnail": "/resources/optimized/images/app-icon-thumb.webp",
+      "medium": "/resources/optimized/images/app-icon-medium.webp",
       "preview": "/resources/optimized/images/app-icon.webp",
       "formats": {
         "webp": {
           "thumbnail": "/resources/optimized/images/app-icon-thumb.webp",
+          "medium": "/resources/optimized/images/app-icon-medium.webp",
           "preview": "/resources/optimized/images/app-icon.webp"
         }
       }
@@ -147,21 +173,103 @@
     "images/app-store/desktop": {
       "source": "images/app-store/desktop.png",
       "thumbnail": "/resources/optimized/images/app-store/desktop-thumb.webp",
+      "medium": "/resources/optimized/images/app-store/desktop-medium.webp",
       "preview": "/resources/optimized/images/app-store/desktop.webp",
       "formats": {
         "webp": {
           "thumbnail": "/resources/optimized/images/app-store/desktop-thumb.webp",
+          "medium": "/resources/optimized/images/app-store/desktop-medium.webp",
           "preview": "/resources/optimized/images/app-store/desktop.webp"
+        }
+      }
+    },
+    "images/app-store/en/desktop": {
+      "source": "images/app-store/en/desktop.png",
+      "thumbnail": "/resources/optimized/images/app-store/en/desktop-thumb.webp",
+      "medium": "/resources/optimized/images/app-store/en/desktop-medium.webp",
+      "preview": "/resources/optimized/images/app-store/en/desktop.webp",
+      "formats": {
+        "webp": {
+          "thumbnail": "/resources/optimized/images/app-store/en/desktop-thumb.webp",
+          "medium": "/resources/optimized/images/app-store/en/desktop-medium.webp",
+          "preview": "/resources/optimized/images/app-store/en/desktop.webp"
+        }
+      }
+    },
+    "images/app-store/en/floating": {
+      "source": "images/app-store/en/floating.png",
+      "thumbnail": "/resources/optimized/images/app-store/en/floating-thumb.webp",
+      "medium": "/resources/optimized/images/app-store/en/floating-medium.webp",
+      "preview": "/resources/optimized/images/app-store/en/floating.webp",
+      "formats": {
+        "webp": {
+          "thumbnail": "/resources/optimized/images/app-store/en/floating-thumb.webp",
+          "medium": "/resources/optimized/images/app-store/en/floating-medium.webp",
+          "preview": "/resources/optimized/images/app-store/en/floating.webp"
+        }
+      }
+    },
+    "images/app-store/en/guide": {
+      "source": "images/app-store/en/guide.png",
+      "thumbnail": "/resources/optimized/images/app-store/en/guide-thumb.webp",
+      "medium": "/resources/optimized/images/app-store/en/guide-medium.webp",
+      "preview": "/resources/optimized/images/app-store/en/guide.webp",
+      "formats": {
+        "webp": {
+          "thumbnail": "/resources/optimized/images/app-store/en/guide-thumb.webp",
+          "medium": "/resources/optimized/images/app-store/en/guide-medium.webp",
+          "preview": "/resources/optimized/images/app-store/en/guide.webp"
+        }
+      }
+    },
+    "images/app-store/en/notes": {
+      "source": "images/app-store/en/notes.png",
+      "thumbnail": "/resources/optimized/images/app-store/en/notes-thumb.webp",
+      "medium": "/resources/optimized/images/app-store/en/notes-medium.webp",
+      "preview": "/resources/optimized/images/app-store/en/notes.webp",
+      "formats": {
+        "webp": {
+          "thumbnail": "/resources/optimized/images/app-store/en/notes-thumb.webp",
+          "medium": "/resources/optimized/images/app-store/en/notes-medium.webp",
+          "preview": "/resources/optimized/images/app-store/en/notes.webp"
+        }
+      }
+    },
+    "images/app-store/en/tasks": {
+      "source": "images/app-store/en/tasks.png",
+      "thumbnail": "/resources/optimized/images/app-store/en/tasks-thumb.webp",
+      "medium": "/resources/optimized/images/app-store/en/tasks-medium.webp",
+      "preview": "/resources/optimized/images/app-store/en/tasks.webp",
+      "formats": {
+        "webp": {
+          "thumbnail": "/resources/optimized/images/app-store/en/tasks-thumb.webp",
+          "medium": "/resources/optimized/images/app-store/en/tasks-medium.webp",
+          "preview": "/resources/optimized/images/app-store/en/tasks.webp"
+        }
+      }
+    },
+    "images/app-store/en/themes": {
+      "source": "images/app-store/en/themes.png",
+      "thumbnail": "/resources/optimized/images/app-store/en/themes-thumb.webp",
+      "medium": "/resources/optimized/images/app-store/en/themes-medium.webp",
+      "preview": "/resources/optimized/images/app-store/en/themes.webp",
+      "formats": {
+        "webp": {
+          "thumbnail": "/resources/optimized/images/app-store/en/themes-thumb.webp",
+          "medium": "/resources/optimized/images/app-store/en/themes-medium.webp",
+          "preview": "/resources/optimized/images/app-store/en/themes.webp"
         }
       }
     },
     "images/app-store/floating": {
       "source": "images/app-store/floating.png",
       "thumbnail": "/resources/optimized/images/app-store/floating-thumb.webp",
+      "medium": "/resources/optimized/images/app-store/floating-medium.webp",
       "preview": "/resources/optimized/images/app-store/floating.webp",
       "formats": {
         "webp": {
           "thumbnail": "/resources/optimized/images/app-store/floating-thumb.webp",
+          "medium": "/resources/optimized/images/app-store/floating-medium.webp",
           "preview": "/resources/optimized/images/app-store/floating.webp"
         }
       }
@@ -169,10 +277,12 @@
     "images/app-store/guide": {
       "source": "images/app-store/guide.png",
       "thumbnail": "/resources/optimized/images/app-store/guide-thumb.webp",
+      "medium": "/resources/optimized/images/app-store/guide-medium.webp",
       "preview": "/resources/optimized/images/app-store/guide.webp",
       "formats": {
         "webp": {
           "thumbnail": "/resources/optimized/images/app-store/guide-thumb.webp",
+          "medium": "/resources/optimized/images/app-store/guide-medium.webp",
           "preview": "/resources/optimized/images/app-store/guide.webp"
         }
       }
@@ -180,10 +290,12 @@
     "images/app-store/notes": {
       "source": "images/app-store/notes.png",
       "thumbnail": "/resources/optimized/images/app-store/notes-thumb.webp",
+      "medium": "/resources/optimized/images/app-store/notes-medium.webp",
       "preview": "/resources/optimized/images/app-store/notes.webp",
       "formats": {
         "webp": {
           "thumbnail": "/resources/optimized/images/app-store/notes-thumb.webp",
+          "medium": "/resources/optimized/images/app-store/notes-medium.webp",
           "preview": "/resources/optimized/images/app-store/notes.webp"
         }
       }
@@ -191,10 +303,12 @@
     "images/app-store/tasks": {
       "source": "images/app-store/tasks.png",
       "thumbnail": "/resources/optimized/images/app-store/tasks-thumb.webp",
+      "medium": "/resources/optimized/images/app-store/tasks-medium.webp",
       "preview": "/resources/optimized/images/app-store/tasks.webp",
       "formats": {
         "webp": {
           "thumbnail": "/resources/optimized/images/app-store/tasks-thumb.webp",
+          "medium": "/resources/optimized/images/app-store/tasks-medium.webp",
           "preview": "/resources/optimized/images/app-store/tasks.webp"
         }
       }
@@ -202,10 +316,12 @@
     "images/app-store/themes": {
       "source": "images/app-store/themes.png",
       "thumbnail": "/resources/optimized/images/app-store/themes-thumb.webp",
+      "medium": "/resources/optimized/images/app-store/themes-medium.webp",
       "preview": "/resources/optimized/images/app-store/themes.webp",
       "formats": {
         "webp": {
           "thumbnail": "/resources/optimized/images/app-store/themes-thumb.webp",
+          "medium": "/resources/optimized/images/app-store/themes-medium.webp",
           "preview": "/resources/optimized/images/app-store/themes.webp"
         }
       }
@@ -213,10 +329,12 @@
     "images/floatem-watercolor-botanical": {
       "source": "images/floatem-watercolor-botanical.png",
       "thumbnail": "/resources/optimized/images/floatem-watercolor-botanical-thumb.webp",
+      "medium": "/resources/optimized/images/floatem-watercolor-botanical-medium.webp",
       "preview": "/resources/optimized/images/floatem-watercolor-botanical.webp",
       "formats": {
         "webp": {
           "thumbnail": "/resources/optimized/images/floatem-watercolor-botanical-thumb.webp",
+          "medium": "/resources/optimized/images/floatem-watercolor-botanical-medium.webp",
           "preview": "/resources/optimized/images/floatem-watercolor-botanical.webp"
         }
       }
@@ -224,10 +342,12 @@
     "images/home-hero-floatem-workspaces": {
       "source": "images/home-hero-floatem-workspaces.png",
       "thumbnail": "/resources/optimized/images/home-hero-floatem-workspaces-thumb.webp",
+      "medium": "/resources/optimized/images/home-hero-floatem-workspaces-medium.webp",
       "preview": "/resources/optimized/images/home-hero-floatem-workspaces.webp",
       "formats": {
         "webp": {
           "thumbnail": "/resources/optimized/images/home-hero-floatem-workspaces-thumb.webp",
+          "medium": "/resources/optimized/images/home-hero-floatem-workspaces-medium.webp",
           "preview": "/resources/optimized/images/home-hero-floatem-workspaces.webp"
         }
       }
