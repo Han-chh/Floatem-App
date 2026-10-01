@@ -16,8 +16,8 @@ export default function FeaturesPage({ t, locale, go }: { t: Translation, locale
   const [demoPhase, setDemoPhase] = useState<DemoPhase>('open')
   const demoColumnRef = useRef<HTMLElement>(null)
   const restoreControlRef = useRef<HTMLButtonElement>(null)
-  const phaseTimerRef = useRef<number>()
-  const animationFrameRef = useRef<number>()
+  const phaseTimerRef = useRef<number | undefined>(undefined)
+  const animationFrameRef = useRef<number | undefined>(undefined)
   const localizedScreenshots = screenshots.appStore[locale]
   const images = [localizedScreenshots.floating, localizedScreenshots.desktop, localizedScreenshots.tasks, localizedScreenshots.guide, localizedScreenshots.themes]
   const videos = ['/videos/floatem-card-float-demo.mp4', '/videos/floatem-capture-demo-safe.mp4', '/videos/floatem-reminder-demo.mp4', '/videos/floatem-guide-onboarding-demo.mp4']
