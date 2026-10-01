@@ -5,13 +5,13 @@ import { appIconImage, botanicalImage } from './content/rootMedia'
 import { support, type Locale } from './content/site'
 import { en } from './locales/en'
 import { zh } from './locales/zh'
+import FeaturesPage from './pages/FeaturesPage'
 import './styles/main.css'
 
 type Page = 'features' | 'download' | 'support' | 'privacy'
 type Translation = typeof zh
 const pages: Page[] = ['features', 'download', 'support', 'privacy']
 
-const FeaturesPage = lazy(() => import('./pages/FeaturesPage'))
 const DownloadPage = lazy(() => import('./pages/DownloadPage'))
 const SupportPage = lazy(() => import('./pages/SupportPage'))
 const PrivacyPage = lazy(() => import('./pages/PrivacyPage'))

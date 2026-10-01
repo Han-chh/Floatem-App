@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 type OptimizedVideoProps = {
   src: string
@@ -9,13 +9,37 @@ type OptimizedVideoProps = {
 }
 
 /**
- * Autoplays an optimized, muted demo as soon as its route mounts. WebM is used
- * first and the generated H.264 MP4 is available for browsers without WebM.
+ * Loads an optimized, muted demo shortly before it enters the viewport. WebM
+ * is used first and the generated H.264 MP4 is available as a fallback.
  */
 export function OptimizedVideo({ src, sourceType = 'video/webm', fallbackSrc, poster, label }: OptimizedVideoProps) {
   const videoRef = useRef<HTMLVideoElement>(null)
-  const [isLoading, setIsLoading] = useState(true)
+  const [shouldLoad, setShouldLoad] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
   const [hasError, setHasError] = useState(false)
+
+  useEffect(() => {
+    const video = videoRef.current
+    if (!video) return
+    if (!('IntersectionObserver' in window)) {
+      setShouldLoad(true)
+      setIsLoading(true)
+      return
+    }
+
+    const observer = new IntersectionObserver(([entry]) => {
+      if (!entry?.isIntersecting) return
+      setShouldLoad(true)
+      setIsLoading(true)
+      observer.disconnect()
+    }, { rootMargin: '240px 0px' })
+    observer.observe(video)
+    return () => observer.disconnect()
+  }, [])
+
+  useEffect(() => {
+    if (shouldLoad) videoRef.current?.load()
+  }, [shouldLoad])
 
   const startPlayback = (video: HTMLVideoElement) => {
     video.muted = true
@@ -38,7 +62,7 @@ export function OptimizedVideo({ src, sourceType = 'video/webm', fallbackSrc, po
       loop
       muted
       playsInline
-      preload="auto"
+      preload={shouldLoad ? 'metadata' : 'none'}
       poster={poster}
       aria-label={label}
       onCanPlay={(event) => {
@@ -49,8 +73,8 @@ export function OptimizedVideo({ src, sourceType = 'video/webm', fallbackSrc, po
       onWaiting={() => setIsLoading(true)}
       onError={() => { setHasError(true); setIsLoading(false) }}
     >
-      <source src={src} type={sourceType} />
-      {fallbackSrc !== src && <source src={fallbackSrc} type="video/mp4" />}
+      {shouldLoad && <source src={src} type={sourceType} />}
+      {shouldLoad && fallbackSrc !== src && <source src={fallbackSrc} type="video/mp4" />}
       Your browser does not support embedded video.
     </video>
     {isLoading && !hasError && <span className="optimized-video-status" role="status">Loading video…</span>}

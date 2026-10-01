@@ -101,6 +101,7 @@ export function FloatplaneDemo({ siteLocale, onCollapse }: { siteLocale: DemoLan
   const [isFullscreen, setIsFullscreen] = useState(false)
   const [dragPreview, setDragPreview] = useState<DragPreview | null>(null)
   const [dragPreviewReady, setDragPreviewReady] = useState(false)
+  const [mainFrameReady, setMainFrameReady] = useState(false)
   const [appWindowMinimizing, setAppWindowMinimizing] = useState(false)
   const shellRef = useRef<HTMLDivElement>(null)
   const desktopRef = useRef<HTMLDivElement>(null)
@@ -195,6 +196,10 @@ export function FloatplaneDemo({ siteLocale, onCollapse }: { siteLocale: DemoLan
   }, [floatingCards])
 
   useEffect(() => {
+    if (appOpen) setMainFrameReady(false)
+  }, [appOpen, iframeKey, siteLocale])
+
+  useEffect(() => {
     const language = siteLocale === 'zh' ? 'zh-CN' : 'en'
     setFloatingCards((current) => current.map((card) => card.payload.language === language ? card : {
       ...card,
@@ -273,6 +278,11 @@ export function FloatplaneDemo({ siteLocale, onCollapse }: { siteLocale: DemoLan
     const handleMessage = (event: MessageEvent<HostMessage>) => {
       if (event.origin !== window.location.origin || event.data?.source !== 'floatplane-web-demo') return
       const { type, detail } = event.data
+
+      if (type === 'frontend-ready' && event.source === mainFrameRef.current?.contentWindow) {
+        setMainFrameReady(true)
+        return
+      }
 
       const readPreviewMessage = () => {
         if (!detail || typeof detail !== 'object') return null
@@ -955,7 +965,7 @@ export function FloatplaneDemo({ siteLocale, onCollapse }: { siteLocale: DemoLan
       <div className="floatplane-wallpaper-copy" aria-hidden="true"><span>FLOATPLANE SYSTEM SANDBOX</span><strong>{tr('在浏览器中体验完整Floatem', 'Explore the complete Floatem experience.')}</strong><small>{tr('模拟桌面环境；演示数据只保存在你的浏览器中。', 'A desktop-like sandbox. Demo data stays in your browser.')}</small></div>
 
       {appOpen && <section
-        className={`floatem-original-window${appWindowMinimizing ? ' is-minimizing' : ''}`}
+        className={`floatem-original-window${appWindowMinimizing ? ' is-minimizing' : ''}${mainFrameReady ? ' is-ready' : ' is-loading'}`}
         ref={previewRef}
         aria-label={tr('Floatem 互动网页版', 'Floatem interactive web demo')}
         onAnimationEnd={(event) => {
@@ -990,6 +1000,10 @@ export function FloatplaneDemo({ siteLocale, onCollapse }: { siteLocale: DemoLan
           </div>
         </div>
         <div className="floatem-window-shadow" />
+        <div className="floatem-frame-loading" role="status" aria-live="polite">
+          <img src={`${import.meta.env.BASE_URL}floatem-app-icon-64.png`} alt="" />
+          <span>{tr('正在打开 Floatem…', 'Opening Floatem…')}</span>
+        </div>
         <iframe
           key={`${iframeKey}-${siteLocale}`}
           ref={mainFrameRef}
@@ -1014,27 +1028,27 @@ export function FloatplaneDemo({ siteLocale, onCollapse }: { siteLocale: DemoLan
         } as CSSProperties}
         aria-hidden="true"
       >
-        <iframe
-          ref={dragPreviewFrameRef}
-          src={dragPreviewSource}
-          title=""
-          tabIndex={-1}
-          style={dragPreview ? {
-            width: dragPreview.payload.size.width + 32,
-            height: dragPreview.payload.size.height + 32,
-          } : undefined}
-          onLoad={() => {
-            const preview = dragPreviewRef.current
-            syncDragPreviewFrame(preview?.payload ?? null)
-            if (!preview) return
-            window.requestAnimationFrame(() => {
-              syncDragPreviewFrame(dragPreviewRef.current?.payload ?? null)
+        {dragPreview && <iframe
+            ref={dragPreviewFrameRef}
+            src={dragPreviewSource}
+            title=""
+            tabIndex={-1}
+            style={{
+              width: dragPreview.payload.size.width + 32,
+              height: dragPreview.payload.size.height + 32,
+            }}
+            onLoad={() => {
+              const preview = dragPreviewRef.current
+              syncDragPreviewFrame(preview?.payload ?? null)
+              if (!preview) return
               window.requestAnimationFrame(() => {
-                if (dragPreviewRef.current) setDragPreviewReady(true)
+                syncDragPreviewFrame(dragPreviewRef.current?.payload ?? null)
+                window.requestAnimationFrame(() => {
+                  if (dragPreviewRef.current) setDragPreviewReady(true)
+                })
               })
-            })
-          }}
-        />
+            }}
+          />}
       </div>
 
       {floatingCards.map((card, index) => <div
