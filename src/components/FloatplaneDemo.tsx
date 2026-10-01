@@ -94,6 +94,7 @@ function clamp(value: number, min: number, max: number) {
 
 export function FloatplaneDemo({ siteLocale, onCollapse }: { siteLocale: DemoLanguage, onCollapse: () => void }) {
   const [appOpen, setAppOpen] = useState(true)
+  const [dockPlacement, setDockPlacement] = useState<'corner' | 'center'>('corner')
   const [iframeKey, setIframeKey] = useState(0)
   const [floatingCards, setFloatingCards] = useState<FloatingCard[]>([])
   const [toast, setToast] = useState('')
@@ -125,7 +126,7 @@ export function FloatplaneDemo({ siteLocale, onCollapse }: { siteLocale: DemoLan
   const appWindowDragRef = useRef<{ pointerId: number, pointerX: number, pointerY: number, windowX: number, windowY: number } | null>(null)
   const appWindowDragFrameRef = useRef<number | undefined>(undefined)
   const appWindowPositionRef = useRef<{ x: number, y: number } | null>(null)
-  const appWindowActionRef = useRef<'hide' | 'reload' | 'quit'>('hide')
+  const appWindowActionRef = useRef<'hide' | 'close' | 'reload' | 'quit'>('hide')
   const appWindowMinimizeTimerRef = useRef<number | undefined>(undefined)
   const reminderTimersRef = useRef(new Map<string, number>())
   const tr = (zh: string, en: string) => siteLocale === 'zh' ? zh : en
@@ -718,12 +719,16 @@ export function FloatplaneDemo({ siteLocale, onCollapse }: { siteLocale: DemoLan
         return
       }
       if (type === 'hide-window') minimizeAppWindow('hide')
-      if (type === 'show-window') setAppOpen(true)
+      if (type === 'show-window') {
+        setDockPlacement('corner')
+        setAppOpen(true)
+      }
       if (type === 'toggle-window') setAppOpen((current) => {
         if (current) {
           window.setTimeout(() => minimizeAppWindow('hide'), 0)
           return current
         }
+        setDockPlacement('corner')
         return true
       })
       if (type === 'test-notification' || type === 'notification') setToast(tr('提醒通知已触发', 'Reminder notification delivered'))
@@ -874,11 +879,13 @@ export function FloatplaneDemo({ siteLocale, onCollapse }: { siteLocale: DemoLan
     appWindowDragRef.current = null
   }
 
-  function minimizeAppWindow(action: 'hide' | 'reload' | 'quit') {
+  function minimizeAppWindow(action: 'hide' | 'close' | 'reload' | 'quit') {
     // A full quit is visually collected by the Dock just like the window's
     // close control, but it also returns every detached card first.
     if (action === 'quit') returnAllFloatingCards()
     if (!appOpen || appWindowMinimizing) return
+    const centerDock = action === 'close' || action === 'quit'
+    setDockPlacement(centerDock ? 'center' : 'corner')
     const element = previewRef.current
     const desktop = desktopRef.current?.getBoundingClientRect()
     const preview = element?.getBoundingClientRect()
@@ -889,8 +896,10 @@ export function FloatplaneDemo({ siteLocale, onCollapse }: { siteLocale: DemoLan
     }
     const left = preview.left - desktop.left
     const top = preview.top - desktop.top
-    const targetX = dockIcon.left + dockIcon.width / 2 - (preview.left + preview.width / 2)
-    const targetY = dockIcon.top + dockIcon.height / 2 - (preview.top + preview.height / 2)
+    const targetCenterX = centerDock ? desktop.left + desktop.width / 2 : dockIcon.left + dockIcon.width / 2
+    const targetCenterY = centerDock ? desktop.top + desktop.height / 2 : dockIcon.top + dockIcon.height / 2
+    const targetX = targetCenterX - (preview.left + preview.width / 2)
+    const targetY = targetCenterY - (preview.top + preview.height / 2)
     element.style.left = `${left}px`
     element.style.top = `${top}px`
     element.style.bottom = 'auto'
@@ -925,6 +934,7 @@ export function FloatplaneDemo({ siteLocale, onCollapse }: { siteLocale: DemoLan
         launchAtLogin = true
       }
       setIframeKey((current) => current + 1)
+      setDockPlacement('corner')
       setAppOpen(launchAtLogin)
       setToast(launchAtLogin ? tr('Floatem 已随沙盒启动', 'Floatem launched with the sandbox') : tr('沙盒已启动，Floatem 保持关闭', 'Sandbox started with Floatem closed'))
     }, 180)
@@ -935,6 +945,7 @@ export function FloatplaneDemo({ siteLocale, onCollapse }: { siteLocale: DemoLan
     setToast(tr('正在重新启动 Floatplane 沙盒…', 'Restarting the Floatplane sandbox…'))
     if (!appOpen) {
       setIframeKey((current) => current + 1)
+      setDockPlacement('corner')
       setAppOpen(true)
       return
     }
@@ -993,7 +1004,7 @@ export function FloatplaneDemo({ siteLocale, onCollapse }: { siteLocale: DemoLan
               aria-label={tr('关闭 Floatem 并缩回程序坞', 'Close Floatem to the Dock')}
               title={tr('关闭', 'Close')}
               onPointerDown={(event) => event.stopPropagation()}
-              onClick={() => minimizeAppWindow('hide')}
+              onClick={() => minimizeAppWindow('close')}
             />
             <button
               type="button"
@@ -1080,7 +1091,7 @@ export function FloatplaneDemo({ siteLocale, onCollapse }: { siteLocale: DemoLan
         />
       </div>)}
 
-      <nav className={`floatplane-dock${appOpen && !appWindowMinimizing ? '' : ' is-compact'}`} aria-label={tr('沙盒程序坞', 'Sandbox dock')}>
+      <nav className={`floatplane-dock${appOpen && !appWindowMinimizing ? '' : ' is-compact'}${dockPlacement === 'center' ? ' is-centered' : ''}`} aria-label={tr('沙盒程序坞', 'Sandbox dock')}>
         {appOpen && !appWindowMinimizing && <button onClick={restartSandbox}><span>↻</span><small>{tr('重新加载', 'Reload')}</small></button>}
         <button
           ref={dockAppButtonRef}
@@ -1088,7 +1099,10 @@ export function FloatplaneDemo({ siteLocale, onCollapse }: { siteLocale: DemoLan
           onClick={() => {
             returnAllFloatingCards()
             if (appOpen) minimizeAppWindow('hide')
-            else setAppOpen(true)
+            else {
+              setDockPlacement('corner')
+              setAppOpen(true)
+            }
           }}
           aria-label={appOpen ? tr('隐藏 Floatem', 'Hide Floatem') : tr('打开 Floatem', 'Open Floatem')}
         >

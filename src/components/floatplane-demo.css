@@ -519,6 +519,14 @@
   right: auto;
   left: 10px;
 }
+.floatplane-dock.is-centered,
+.floatplane-shell:fullscreen .floatplane-dock.is-centered {
+  right: auto;
+  left: 50%;
+  top: 50%;
+  bottom: auto;
+  translate: -50% -50%;
+}
 
 .fp-system-toast {
   position: absolute;
