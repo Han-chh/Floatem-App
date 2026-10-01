@@ -249,12 +249,13 @@ export function FloatplaneDemo({ siteLocale, onCollapse }: { siteLocale: DemoLan
     if (!preview || !desktop) return
     const syncScale = () => {
       const compactViewport = window.matchMedia('(max-width: 640px)').matches
-      const verticalClearance = compactViewport ? 174 : 56
-      const dockClearance = compactViewport ? 82 : 88
+      const verticalClearance = compactViewport ? 160 : 56
+      const dockClearance = compactViewport ? 20 : 88
       const width = Math.min(440, desktop.clientWidth - dockClearance, (desktop.clientHeight - verticalClearance) * (100 / 177))
       preview.style.width = `${Math.max(compactViewport ? 240 : 280, width)}px`
-      preview.style.setProperty('--floatem-app-scale', String(preview.clientWidth / 400))
-      shellRef.current?.style.setProperty('--floatem-preview-width', `${preview.clientWidth}px`)
+      const previewWidth = Number.parseFloat(window.getComputedStyle(preview).width)
+      preview.style.setProperty('--floatem-app-scale', String(previewWidth / 400))
+      shellRef.current?.style.setProperty('--floatem-preview-width', `${previewWidth}px`)
     }
     const observer = new ResizeObserver(syncScale)
     observer.observe(desktop)
