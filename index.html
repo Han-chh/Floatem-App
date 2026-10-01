@@ -20,6 +20,11 @@
         webviewModule.href = new URL('main-30_CJPq1.js', webviewAssets).href
         webviewModule.fetchPriority = 'high'
         document.head.append(webviewModule)
+        const webviewDocument = document.createElement('link')
+        const language = window.localStorage.getItem('floatem-language') === 'zh' ? 'zh' : 'en'
+        webviewDocument.rel = 'prefetch'
+        webviewDocument.href = new URL(`../index.html?language=${language}&revision=20261001-todo-reminders-v2`, webviewAssets).href
+        document.head.append(webviewDocument)
       })()
     </script>
     <title>Floatem · Let’s Float’em</title>

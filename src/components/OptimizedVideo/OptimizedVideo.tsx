@@ -63,7 +63,7 @@ export function OptimizedVideo({ src, sourceType = 'video/webm', fallbackSrc, po
       muted
       playsInline
       preload={shouldLoad ? 'metadata' : 'none'}
-      poster={poster}
+      poster={shouldLoad ? poster : undefined}
       aria-label={label}
       onCanPlay={(event) => {
         setIsLoading(false)
@@ -77,6 +77,7 @@ export function OptimizedVideo({ src, sourceType = 'video/webm', fallbackSrc, po
       {shouldLoad && fallbackSrc !== src && <source src={fallbackSrc} type="video/mp4" />}
       Your browser does not support embedded video.
     </video>
+    {!shouldLoad && <img className="optimized-video-poster" src={poster} loading="lazy" decoding="async" alt="" />}
     {isLoading && !hasError && <span className="optimized-video-status" role="status">Loading video…</span>}
     {hasError && <button className="optimized-video-retry" type="button" onClick={retry}>Try again</button>}
   </div>
