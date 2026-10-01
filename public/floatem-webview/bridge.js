@@ -84,6 +84,76 @@
     // The current preview still receives the requested language through its URL.
   }
 
+  const createSampleId = (kind, createdAt) => `${kind}-sample-${createdAt.toString(36)}`;
+  const formatLocalDateKey = (date) => {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  };
+
+  const ensureSampleCards = () => {
+    if (params.has('mode')) return null;
+
+    const isChinese = read(SETTINGS_KEY, {}).language === 'zh-CN';
+    const createdAt = Date.now();
+    const storedNotes = read(NOTES_KEY, []);
+    const noteCards = Array.isArray(storedNotes)
+      ? storedNotes
+      : Array.isArray(storedNotes && storedNotes.cards) ? storedNotes.cards : [];
+    let notes = storedNotes;
+
+    if (noteCards.length === 0) {
+      const groups = !Array.isArray(storedNotes) && Array.isArray(storedNotes && storedNotes.groups)
+        ? storedNotes.groups
+        : [];
+      notes = {
+        cards: [{
+          id: createSampleId('note', createdAt),
+          title: isChinese ? '欢迎使用 Floatem' : 'Welcome to Floatem',
+          dotColor: '#C8C0B5',
+          groupId: null,
+          collapsed: false,
+          content: [{
+            type: 'paragraph',
+            children: [{ text: isChinese ? '记录一个想法，让它随时浮在眼前。' : 'Capture a thought and keep it close at hand.' }],
+          }],
+          createdAt,
+          updatedAt: createdAt,
+        }],
+        groups,
+      };
+      write(NOTES_KEY, notes);
+    }
+
+    const storedTodos = read(TODOS_KEY, []);
+    const todoItems = Array.isArray(storedTodos)
+      ? storedTodos
+      : Array.isArray(storedTodos && storedTodos.items) ? storedTodos.items : [];
+    let todos = storedTodos;
+
+    if (todoItems.length === 0) {
+      const groups = !Array.isArray(storedTodos) && Array.isArray(storedTodos && storedTodos.groups)
+        ? storedTodos.groups
+        : [];
+      todos = {
+        items: [{
+          id: createSampleId('todo', createdAt),
+          text: isChinese ? '试试创建一个待办事项' : 'Try creating a todo',
+          done: false,
+          groupId: null,
+          reminderAt: null,
+          createdAt,
+          dateKey: formatLocalDateKey(new Date(createdAt)),
+        }],
+        groups,
+      };
+      write(TODOS_KEY, todos);
+    }
+
+    return { notes, todos };
+  };
+
   const post = (type, detail) => window.parent.postMessage({ source: 'floatplane-web-demo', type, detail }, window.location.origin);
   const settings = () => read(SETTINGS_KEY, {});
   const isSandboxFullscreen = () => {
@@ -292,9 +362,11 @@
       };
     },
     async loadAllData() {
-      const todos = read(TODOS_KEY, []);
+      const sampleData = ensureSampleCards();
+      const notes = sampleData ? sampleData.notes : read(NOTES_KEY, []);
+      const todos = sampleData ? sampleData.todos : read(TODOS_KEY, []);
       post('sync-todo-reminders', todos);
-      return { notes: read(NOTES_KEY, []), todos, settings: settings() };
+      return { notes, todos, settings: settings() };
     },
     async saveNotes(notes) {
       write(NOTES_KEY, notes);
