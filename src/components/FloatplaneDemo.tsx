@@ -256,8 +256,11 @@ export function FloatplaneDemo({ siteLocale, onCollapse }: { siteLocale: DemoLan
     const syncScale = () => {
       const compactViewport = window.matchMedia('(max-width: 640px)').matches
       const verticalClearance = compactViewport ? 160 : 56
-      const dockClearance = compactViewport ? 20 : 88
-      const width = Math.min(440, desktop.clientWidth - dockClearance, (desktop.clientHeight - verticalClearance) * (100 / 177))
+      // Keep the app proportional to the sandbox instead of subtracting a
+      // fixed Dock gutter. A proportional width stays visually consistent
+      // when Chrome stores a different per-origin page zoom.
+      const availableWidth = compactViewport ? desktop.clientWidth - 20 : desktop.clientWidth * 0.8
+      const width = Math.min(440, availableWidth, (desktop.clientHeight - verticalClearance) * (100 / 177))
       preview.style.width = `${Math.max(compactViewport ? 240 : 280, width)}px`
       const previewWidth = Number.parseFloat(window.getComputedStyle(preview).width)
       preview.style.setProperty('--floatem-app-scale', String(previewWidth / 400))
@@ -884,7 +887,9 @@ export function FloatplaneDemo({ siteLocale, onCollapse }: { siteLocale: DemoLan
     // close control, but it also returns every detached card first.
     if (action === 'quit') returnAllFloatingCards()
     if (!appOpen || appWindowMinimizing) return
-    const centerDock = action === 'close' || action === 'quit'
+    // Every action that leaves Floatem closed collects the app into the
+    // center launcher. Reload is the only transition that reopens it.
+    const centerDock = action !== 'reload'
     setDockPlacement(centerDock ? 'center' : 'corner')
     const element = previewRef.current
     const desktop = desktopRef.current?.getBoundingClientRect()
@@ -934,7 +939,7 @@ export function FloatplaneDemo({ siteLocale, onCollapse }: { siteLocale: DemoLan
         launchAtLogin = true
       }
       setIframeKey((current) => current + 1)
-      setDockPlacement('corner')
+      setDockPlacement(launchAtLogin ? 'corner' : 'center')
       setAppOpen(launchAtLogin)
       setToast(launchAtLogin ? tr('Floatem 已随沙盒启动', 'Floatem launched with the sandbox') : tr('沙盒已启动，Floatem 保持关闭', 'Sandbox started with Floatem closed'))
     }, 180)

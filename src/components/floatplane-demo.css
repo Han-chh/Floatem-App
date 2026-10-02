@@ -65,7 +65,7 @@
 .feature-experience-grid {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(520px, 1fr) clamp(390px, 30vw, 430px);
+  grid-template-columns: minmax(520px, 1fr) clamp(390px, 29vw, 520px);
   gap: clamp(10px, 1.1vw, 18px);
   align-items: start;
   padding-top: 12px;
