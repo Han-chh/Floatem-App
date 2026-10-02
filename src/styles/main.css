@@ -140,14 +140,15 @@ footer { display: flex; align-items: flex-end; justify-content: space-between; g
 .hero .inline-link { border-color: #fffaf2a6; }
 
 /* Features: place the product line and conversion action inside the watercolor intro. */
+.features-intro > div:first-child { max-width: none; }
 .features-intro .page-intro-actions { margin-top: 17px; }
 .features-intro-cta { display: flex; align-items: center; gap: 22px; }
-.features-intro-cta p { margin: 0; color: #fff9ef; font-family: "Cormorant Garamond", "Noto Serif SC", serif; font-size: clamp(19px, 1.7vw, 25px); font-style: italic; line-height: 1; text-shadow: 0 1px 7px #182b2096; }
+.features-intro-cta p { margin: 0; color: #fff9ef; font-family: "Cormorant Garamond", "Noto Serif SC", serif; font-size: clamp(19px, 1.7vw, 25px); font-style: italic; line-height: 1; white-space: nowrap; text-shadow: 0 1px 7px #182b2096; }
 .features-intro-cta .button { flex: none; padding: 10px 14px 10px 16px; border: 1px solid #fff9ef38; background: #211e1ae8; box-shadow: 0 9px 24px #17231b30; }
 
 @media (max-width: 760px) {
   .features-intro .page-intro-actions { margin-top: 12px; }
   .features-intro-cta { gap: 12px; }
-  .features-intro-cta p { font-size: 18px; }
+  .features-intro-cta p { font-size: 18px; white-space: normal; }
   .features-intro-cta .button { padding: 9px 11px; }
 }
