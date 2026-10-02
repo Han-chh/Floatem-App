@@ -75,7 +75,7 @@ export default function FeaturesPage({ t, locale, go }: { t: Translation, locale
     })
   }
 
-  return <PageIntro label={t.features.label} title={t.features.title} intro={t.features.intro} className="features-intro" actions={<div className="features-intro-cta"><p>Don't lose thoughts, Float 'em.</p><button className="button filled" onClick={() => go('download')}>{t.common.get}<Arrow /></button></div>}>
+  return <PageIntro label={t.features.label} title={t.features.title} intro={t.features.intro} className="features-intro" actions={<div className="features-intro-cta"><p>Don't lose your thoughts, Float 'em.</p><button className="button filled" onClick={() => go('download')}>{t.common.get}<Arrow /></button></div>}>
     <section className={`feature-experience feature-experience-${demoPhase === 'closed' ? 'story' : 'split'} feature-experience-phase-${demoPhase}`}>
       <button ref={restoreControlRef} className="feature-demo-restore" onClick={expandDemo} aria-label={restoreDemoLabel} title={restoreDemoLabel} aria-hidden={demoPhase !== 'closed'} tabIndex={demoPhase === 'closed' ? 0 : -1} disabled={demoPhase !== 'closed'}><span aria-hidden="true" /></button>
       <div className="feature-experience-grid">

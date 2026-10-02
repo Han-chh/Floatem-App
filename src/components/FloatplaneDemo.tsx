@@ -62,7 +62,7 @@ type FloatingWindow = Window & { __FLOATEM_FLOATING_CARD_STATE__?: DemoPayload |
 type DragPreviewWindow = Window & { __FLOATEM_DRAG_PREVIEW_STATE__?: DemoPayload | null }
 
 const WEBVIEW_PATH = `${import.meta.env.BASE_URL}floatem-webview`
-const WEBVIEW_REVISION = '20261002-floating-editor-autosize'
+const WEBVIEW_REVISION = '20261002-slogan-your-thoughts'
 const SANDBOX_MENU_BAR_HEIGHT = 28
 
 function referenceFromPayload(payload: DemoPayload): CardReference {
@@ -135,7 +135,7 @@ export function FloatplaneDemo({ siteLocale, onCollapse }: { siteLocale: DemoLan
   const mainFrameDocument = useMemo(() => {
     const webviewBase = new URL(`${WEBVIEW_PATH}/`, window.location.href).href
     const runtimeUrl = mainSource.replaceAll('&', '&amp;').replaceAll('"', '&quot;')
-    return `<!doctype html><html lang="${siteLocale}"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="floatem-webview-url" content="${runtimeUrl}"><base href="${webviewBase}"><title>Floatem</title><script src="./bridge.js"><\/script><script type="module" crossorigin src="./assets/main-CZJZPEMD.js"><\/script><link rel="stylesheet" crossorigin href="./assets/main-B6VhQnt5.css"></head><body><div id="root"></div></body></html>`
+    return `<!doctype html><html lang="${siteLocale}"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="floatem-webview-url" content="${runtimeUrl}"><base href="${webviewBase}"><title>Floatem</title><script src="./bridge.js"><\/script><script type="module" crossorigin src="./assets/main-DDm2Uk6T.js"><\/script><link rel="stylesheet" crossorigin href="./assets/main-B6VhQnt5.css"></head><body><div id="root"></div></body></html>`
   }, [mainSource, siteLocale])
   const dragPreviewSource = useMemo(() => `${WEBVIEW_PATH}/index.html?mode=drag-preview&language=${siteLocale}&revision=${WEBVIEW_REVISION}`, [siteLocale])
   const systemClock = useMemo(() => {
@@ -990,7 +990,7 @@ export function FloatplaneDemo({ siteLocale, onCollapse }: { siteLocale: DemoLan
 
     <div className="floatplane-desktop" ref={desktopRef}>
       <div className="floatplane-menubar">
-        <div><img className="fp-menubar-icon" src={`${import.meta.env.BASE_URL}floatem-app-icon-64.png`} alt="" /><span className="fp-menubar-slogan">Don't lose thoughts, Float 'em.</span></div>
+        <div><img className="fp-menubar-icon" src={`${import.meta.env.BASE_URL}floatem-app-icon-64.png`} alt="" /><span className="fp-menubar-slogan">Don't lose your thoughts, Float 'em.</span></div>
         <div className="fp-system-meta"><span className="fp-system-label">{tr('系统沙盒', 'System Sandbox')}</span><time dateTime={new Date(now).toISOString()} title={systemClock.timeZone}><span className="fp-system-date">{systemClock.date.format(now)}</span><span className="fp-system-weekday">{systemClock.weekday.format(now)}</span><span className="fp-system-time">{systemClock.time.format(now)}</span></time></div>
       </div>
 
