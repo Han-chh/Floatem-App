@@ -150,6 +150,16 @@ export function FloatplaneDemo({ siteLocale, onCollapse }: { siteLocale: DemoLan
       time: new Intl.DateTimeFormat(undefined, timeOptions),
     }
   }, [])
+  // Match the macOS host: inside the app window, dnd-kit owns the reorder
+  // preview and its guide animation. The desktop preview only becomes visible
+  // after the card has crossed the window boundary.
+  const showDetachedDragPreview = Boolean(
+    dragPreview
+      && dragPreviewReady
+      && dragPreview.detached
+      && !dragPreview.returning
+      && !dragPreview.committing,
+  )
 
   const dispatchMainEvent = useCallback((name: string, detail: unknown) => {
     const target = mainFrameRef.current?.contentWindow
@@ -1040,7 +1050,7 @@ export function FloatplaneDemo({ siteLocale, onCollapse }: { siteLocale: DemoLan
       </section>}
 
       <div
-        className={`fp-drag-preview${dragPreview && dragPreviewReady && !dragPreview.returning && !dragPreview.committing ? ' is-active' : ''}`}
+        className={`fp-drag-preview${showDetachedDragPreview ? ' is-active' : ''}`}
         ref={dragPreviewElementRef}
         style={{
           '--drag-preview-x': `${(dragPreview?.x ?? 0) - 16}px`,
