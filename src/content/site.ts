@@ -11,8 +11,6 @@ export const release = {
   notes: [
     { zh: '修复悬浮 Note 和 Todo 编辑多行内容时的布局问题，卡片现在会随内容向下延伸。', en: 'Fixed multiline editing in floating Notes and Todos so cards now grow downward with their content.' },
     { zh: '原生 macOS 悬浮窗口与卡片内容高度保持同步，标题与操作区域不再被挤压或遮挡。', en: 'Native macOS floating windows now stay synchronized with card content height, keeping headers and controls visible.' },
-    { zh: '改进卡片拖拽预览，使预览尺寸和外观与实际卡片保持一致。', en: 'Improved card drag previews so their size and appearance match the actual card.' },
-    { zh: '更新品牌文案并优化界面细节与整体稳定性。', en: 'Updated the brand copy and refined interface details and overall stability.' },
   ],
 }
 
