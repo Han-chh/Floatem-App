@@ -134,6 +134,8 @@
       ? storedTodos
       : Array.isArray(storedTodos && storedTodos.items) ? storedTodos.items : [];
     let todos = storedTodos;
+    const sampleTodoText = isChinese ? '试试创建一个待办事项' : 'Try creating a todo';
+    const todayDateKey = formatLocalDateKey(new Date(createdAt));
 
     if (todoItems.length === 0) {
       const groups = !Array.isArray(storedTodos) && Array.isArray(storedTodos && storedTodos.groups)
@@ -142,16 +144,32 @@
       todos = {
         items: [{
           id: createSampleId('todo', createdAt),
-          text: isChinese ? '试试创建一个待办事项' : 'Try creating a todo',
+          text: sampleTodoText,
           done: false,
           groupId: null,
           reminderAt: null,
           createdAt,
-          dateKey: formatLocalDateKey(new Date(createdAt)),
+          dateKey: todayDateKey,
         }],
         groups,
       };
       write(TODOS_KEY, todos);
+    } else {
+      // Todos are date-scoped. Keep an untouched welcome item visible on
+      // return visits without changing the user's edited or completed todos.
+      const items = todoItems.map((todo) => {
+        const isUntouchedSample = typeof todo.id === 'string'
+          && todo.id.startsWith('todo-sample-')
+          && (todo.text === '试试创建一个待办事项' || todo.text === 'Try creating a todo')
+          && todo.done === false && todo.groupId == null && todo.reminderAt == null;
+        return isUntouchedSample && (todo.dateKey !== todayDateKey || todo.text !== sampleTodoText)
+          ? Object.assign({}, todo, { dateKey: todayDateKey, text: sampleTodoText })
+          : todo;
+      });
+      if (items.some((todo, index) => todo !== todoItems[index])) {
+        todos = Array.isArray(storedTodos) ? items : Object.assign({}, storedTodos, { items });
+        write(TODOS_KEY, todos);
+      }
     }
 
     return { notes, todos };

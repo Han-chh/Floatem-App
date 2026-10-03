@@ -62,7 +62,7 @@ type FloatingWindow = Window & { __FLOATEM_FLOATING_CARD_STATE__?: DemoPayload |
 type DragPreviewWindow = Window & { __FLOATEM_DRAG_PREVIEW_STATE__?: DemoPayload | null }
 
 const WEBVIEW_PATH = `${import.meta.env.BASE_URL}floatem-webview`
-const WEBVIEW_REVISION = '20261002-slogan-your-thoughts'
+const WEBVIEW_REVISION = '20261003-todo-sample-return-visits'
 const SANDBOX_MENU_BAR_HEIGHT = 28
 
 function referenceFromPayload(payload: DemoPayload): CardReference {
