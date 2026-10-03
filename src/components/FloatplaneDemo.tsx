@@ -990,7 +990,7 @@ export function FloatplaneDemo({ siteLocale, onCollapse }: { siteLocale: DemoLan
 
     <div className="floatplane-desktop" ref={desktopRef}>
       <div className="floatplane-menubar">
-        <div><img className="fp-menubar-icon" src={`${import.meta.env.BASE_URL}floatem-app-icon-64.png`} alt="" /><span className="fp-menubar-slogan">Don't lose your thoughts, Float 'em.</span></div>
+        <div><img className="fp-menubar-icon" src={`${import.meta.env.BASE_URL}floatem-app-icon-64.png`} alt="" /><span className="fp-menubar-slogan">Don't lose your thoughts. Float'em.</span></div>
         <div className="fp-system-meta"><span className="fp-system-label">{tr('系统沙盒', 'System Sandbox')}</span><time dateTime={new Date(now).toISOString()} title={systemClock.timeZone}><span className="fp-system-date">{systemClock.date.format(now)}</span><span className="fp-system-weekday">{systemClock.weekday.format(now)}</span><span className="fp-system-time">{systemClock.time.format(now)}</span></time></div>
       </div>
 
