@@ -595,9 +595,15 @@
   .feature-experience-story .feature-story .feature-row,
   .feature-experience-story .feature-story .feature-row-stacked { grid-template-columns: 34px minmax(0, 1fr); gap: 10px; padding: 29px 0; }
   .feature-demo-column {
-    height: clamp(740px, calc((100vw - 44px) * 1.77 + 200px), 950px);
+    height: auto;
   }
-  .floatplane-shell { min-height: 680px; border-radius: 17px; grid-template-rows: 42px minmax(0, 1fr); }
+  .floatplane-shell {
+    /* Preview aspect ratio plus the toolbar, menubar and window margins. */
+    height: calc(var(--floatem-preview-width, 300px) * 1.77 + 100px);
+    min-height: 0;
+    border-radius: 17px;
+    grid-template-rows: 42px minmax(0, 1fr);
+  }
   .floatplane-wordmark { gap: 7px; }
   .floatplane-wordmark span { font-size: 6px; letter-spacing: .1em; }
   .fp-system-label { display: none; }

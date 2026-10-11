@@ -262,7 +262,7 @@ export function FloatplaneDemo({ siteLocale, onCollapse }: { siteLocale: DemoLan
   useEffect(() => {
     const preview = previewRef.current
     const desktop = desktopRef.current
-    if (!preview || !desktop) return
+    if (!desktop) return
     const syncScale = () => {
       const compactViewport = window.matchMedia('(max-width: 640px)').matches
       const fullscreen = document.fullscreenElement === shellRef.current
@@ -273,10 +273,15 @@ export function FloatplaneDemo({ siteLocale, onCollapse }: { siteLocale: DemoLan
       const availableWidth = compactViewport && fullscreen
         ? desktop.clientWidth - 20
         : Math.min(desktop.clientWidth * 0.8, desktop.clientWidth - dockWidth - 30)
-      const width = Math.min(440, availableWidth, (desktop.clientHeight - verticalClearance) * (100 / 177))
+      // On mobile the shell follows the preview height, so calculate its width
+      // independently of the shell height to avoid a resize feedback loop.
+      const heightLimit = compactViewport && !fullscreen
+        ? Infinity
+        : (desktop.clientHeight - verticalClearance) * (100 / 177)
+      const width = Math.min(440, availableWidth, heightLimit)
       const previewWidth = Math.max(1, width)
-      preview.style.width = `${previewWidth}px`
-      preview.style.setProperty('--floatem-app-scale', String(previewWidth / 400))
+      preview?.style.setProperty('width', `${previewWidth}px`)
+      preview?.style.setProperty('--floatem-app-scale', String(previewWidth / 400))
       shellRef.current?.style.setProperty('--floatem-preview-width', `${previewWidth}px`)
     }
     const observer = new ResizeObserver(syncScale)
