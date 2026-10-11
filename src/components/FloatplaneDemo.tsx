@@ -284,9 +284,12 @@ export function FloatplaneDemo({ siteLocale, onCollapse }: { siteLocale: DemoLan
       preview?.style.setProperty('--floatem-app-scale', String(previewWidth / 400))
       shellRef.current?.style.setProperty('--floatem-preview-width', `${previewWidth}px`)
     }
-    const observer = new ResizeObserver(syncScale)
+    let frame = window.requestAnimationFrame(syncScale)
+    const observer = new ResizeObserver(() => {
+      window.cancelAnimationFrame(frame)
+      frame = window.requestAnimationFrame(syncScale)
+    })
     observer.observe(desktop)
-    const frame = window.requestAnimationFrame(syncScale)
     return () => {
       observer.disconnect()
       window.cancelAnimationFrame(frame)
