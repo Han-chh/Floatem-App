@@ -8,7 +8,7 @@ const today = new Date()
 const todayKey = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`
 const sample = { id: 'todo-sample-old', text: 'Try creating a todo', done: false, groupId: null, reminderAt: null, createdAt: 1, dateKey: '2020-01-01' }
 
-function openDemo({ todos, language = 'en', mode = '' } = {}) {
+function openDemo({ todos, language = 'en', mode = '', clipboard } = {}) {
   const storage = new Map(todos === undefined ? [] : [['floatem.todos', JSON.stringify(todos)]])
   const window = {
     location: { href: `https://example.com/floatem-webview/index.html?language=${language}${mode ? `&mode=${mode}` : ''}` },
@@ -17,8 +17,8 @@ function openDemo({ todos, language = 'en', mode = '' } = {}) {
     parent: { postMessage() {} },
   }
   const document = { querySelector: () => null, createElement: () => ({}), head: { appendChild() {} }, cookie: '' }
-  vm.runInNewContext(bridge, { window, document, URL, navigator: {} })
-  return { load: async () => JSON.parse(JSON.stringify(await window.floatemHost.loadAllData())), storage }
+  vm.runInNewContext(bridge, { window, document, URL, navigator: { clipboard } })
+  return { load: async () => JSON.parse(JSON.stringify(await window.floatemHost.loadAllData())), storage, host: window.floatemHost }
 }
 
 test('empty Todo storage creates one sample in the sandbox language, without duplicates', async () => {
@@ -53,4 +53,17 @@ test('floating and drag preview windows never seed or refresh samples', async ()
     assert.deepEqual((await openDemo({ todos: [], mode }).load()).todos, [])
     assert.deepEqual((await openDemo({ todos: [sample], mode }).load()).todos, [sample])
   }
+})
+
+test('clipboard write failures reach the editor so a failed cut can retain its text', async () => {
+  const failure = new Error('Clipboard permission denied')
+  const demo = openDemo({ clipboard: { writeText: async () => { throw failure } } })
+  await assert.rejects(demo.host.writeClipboardText('Keep this text'), (error) => error === failure)
+})
+
+test('successful clipboard writes complete before the editor removes cut text', async () => {
+  let written = ''
+  const demo = openDemo({ clipboard: { writeText: async (text) => { written = text } } })
+  await demo.host.writeClipboardText('Selected text')
+  assert.equal(written, 'Selected text')
 })

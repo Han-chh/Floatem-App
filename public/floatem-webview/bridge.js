@@ -539,7 +539,8 @@
     async openTextColorPanel() {},
     async pickScreenColor() { return null; },
     async readClipboardText() { try { return await navigator.clipboard.readText(); } catch { return ''; } },
-    async writeClipboardText(text) { try { await navigator.clipboard.writeText(text); } catch {} },
+    // Let the editor detect write failures before deleting a cut selection.
+    async writeClipboardText(text) { await navigator.clipboard.writeText(text); },
     async showWindow() { post('show-window'); },
     async hideWindow() { post('hide-window'); },
     async hidePanelWindow() { post('hide-window'); },
