@@ -62,7 +62,7 @@ type FloatingWindow = Window & { __FLOATEM_FLOATING_CARD_STATE__?: DemoPayload |
 type DragPreviewWindow = Window & { __FLOATEM_DRAG_PREVIEW_STATE__?: DemoPayload | null }
 
 const WEBVIEW_PATH = `${import.meta.env.BASE_URL}floatem-webview`
-const WEBVIEW_REVISION = '20261011-note-cut-single-row'
+const WEBVIEW_REVISION = '1.1.2-70'
 const SANDBOX_MENU_BAR_HEIGHT = 28
 
 function referenceFromPayload(payload: DemoPayload): CardReference {
@@ -135,7 +135,7 @@ export function FloatplaneDemo({ siteLocale, onCollapse }: { siteLocale: DemoLan
   const mainFrameDocument = useMemo(() => {
     const webviewBase = new URL(`${WEBVIEW_PATH}/`, window.location.href).href
     const runtimeUrl = mainSource.replaceAll('&', '&amp;').replaceAll('"', '&quot;')
-    return `<!doctype html><html lang="${siteLocale}"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="floatem-webview-url" content="${runtimeUrl}"><base href="${webviewBase}"><title>Floatem</title><script src="./bridge.js"><\/script><script type="module" crossorigin src="./assets/main-DGVxbHt4.js"><\/script><link rel="stylesheet" crossorigin href="./assets/main-CfIXXT9M.css"></head><body><div id="root"></div></body></html>`
+    return `<!doctype html><html lang="${siteLocale}"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="floatem-webview-url" content="${runtimeUrl}"><base href="${webviewBase}"><title>Floatem</title><script src="./bridge.js"><\/script><script type="module" crossorigin src="./assets/main-ClVny3x2.js"><\/script><link rel="stylesheet" crossorigin href="./assets/main-CfIXXT9M.css"></head><body><div id="root"></div></body></html>`
   }, [mainSource, siteLocale])
   const dragPreviewSource = useMemo(() => `${WEBVIEW_PATH}/index.html?mode=drag-preview&language=${siteLocale}&revision=${WEBVIEW_REVISION}`, [siteLocale])
   const systemClock = useMemo(() => {

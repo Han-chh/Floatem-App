@@ -2,7 +2,7 @@
 
 独立的 Floatem 宣发与技术支持网站，可单独公开到 GitHub，不会泄露主应用仓库。
 
-当前网站发布信息与 **Floatem 1.1.1** 同步，版本、发布日期和更新内容集中维护在 `src/content/site.ts`。
+当前网站发布信息与 **Floatem 1.1.2 (build 70)** 同步，版本、构建号、发布日期和更新内容集中维护在 `src/content/release.json`，由 `src/content/site.ts` 引用。
 
 ## 本地运行
 
@@ -15,8 +15,8 @@ npm run dev
 
 ## 日常更新
 
-- 发布新版本：编辑 `src/content/site.ts` 中的 `release`。这里集中维护版本号、发布日期、下载链接、系统要求和本次更新。
-- 修改首页主题或替换主题截图：编辑同文件的 `themes`，并将图片放到 `public/images/`。
+- 发布新版本：从应用仓库运行 `scripts/sync-website-release.mjs --app <实际构建的 Floatem.app>`，同步 `src/content/release.json`、网站 package 版本及此 README。下载链接与系统要求仍在 `src/content/site.ts` 中维护。
+- 修改首页主题或替换主题截图：编辑 `src/content/site.ts` 中的 `themes`，并将图片放到 `public/images/`。
 - 修改中文、英文文案：分别编辑 `src/locales/zh.ts` 与 `src/locales/en.ts`。两份文件保持相同结构。
 - 更新支持邮箱：编辑 `src/content/site.ts` 中的 `support.email`。
 

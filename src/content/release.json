@@ -1,0 +1,19 @@
+{
+  "version": "1.1.2",
+  "buildNumber": 70,
+  "date": "2026.10.11",
+  "notes": [
+    {
+      "zh": "Note 富文本编辑新增剪切按钮与 Command + X 快捷键，保留所选文字的格式。",
+      "en": "Added a Cut button and Command + X shortcut to Note rich-text editors, preserving the selected text’s formatting."
+    },
+    {
+      "zh": "格式工具栏的所有按钮与折叠按钮统一显示在同一行，操作更集中。",
+      "en": "All formatting controls, including the collapse button, now appear on a single row."
+    },
+    {
+      "zh": "剪切支持撤销；无选中文本或剪贴板写入失败时不会删除内容。",
+      "en": "Cut supports Undo and leaves content intact when no text is selected or the clipboard write fails."
+    }
+  ]
+}

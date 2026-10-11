@@ -1,17 +1,13 @@
+import releaseMetadata from './release.json'
 export type Locale = 'zh' | 'en'
 
-/** Update this object for every release. Links can be App Store, GitHub Release, or a direct file. */
+/** Release metadata is synced from the app; keep download links and requirements here. */
 export const release = {
-  version: '1.1.1',
-  date: '2026.10.02',
+  ...releaseMetadata,
   macDownload: 'https://apps.apple.com/app/id6794372820',
   windowsDownload: '',
   macRequirement: { zh: 'macOS 14.0 或更高版本', en: 'macOS 14.0 or later' },
   windowsRequirement: 'Windows 10 / 11',
-  notes: [
-    { zh: '修复悬浮 Note 和 Todo 编辑多行内容时的布局问题，卡片现在会随内容向下延伸。', en: 'Fixed multiline editing in floating Notes and Todos so cards now grow downward with their content.' },
-    { zh: '原生 macOS 悬浮窗口与卡片内容高度保持同步，标题与操作区域不再被挤压或遮挡。', en: 'Native macOS floating windows now stay synchronized with card content height, keeping headers and controls visible.' },
-  ],
 }
 
 export const support = { email: 'floatemapp@outlook.com' }
