@@ -605,14 +605,6 @@
   .floatplane-menubar time { gap: 5px; }
   .fp-system-date { padding-left: 0; border-left: 0; }
   .floatem-original-window {
-    top: 12px;
-    right: auto;
-    bottom: auto;
-    left: 50%;
-    width: min(calc(100% - 20px), 420px);
-    height: auto;
-    aspect-ratio: 100 / 177;
-    transform: translate3d(-50%, 0, 0);
     border-radius: 23px;
     animation: none;
   }

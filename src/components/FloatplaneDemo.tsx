@@ -265,14 +265,17 @@ export function FloatplaneDemo({ siteLocale, onCollapse }: { siteLocale: DemoLan
     if (!preview || !desktop) return
     const syncScale = () => {
       const compactViewport = window.matchMedia('(max-width: 640px)').matches
-      const verticalClearance = compactViewport ? 160 : 56
-      // Keep the app proportional to the sandbox instead of subtracting a
-      // fixed Dock gutter. A proportional width stays visually consistent
-      // when Chrome stores a different per-origin page zoom.
-      const availableWidth = compactViewport ? desktop.clientWidth - 20 : desktop.clientWidth * 0.8
+      const fullscreen = document.fullscreenElement === shellRef.current
+      const verticalClearance = compactViewport && fullscreen ? 160 : 56
+      const dockWidth = desktop.querySelector<HTMLElement>('.floatplane-dock')?.offsetWidth ?? 60
+      // Reserve both edge margins and a gap beside the Dock so the preview
+      // fits alongside its controls even on narrow mobile screens.
+      const availableWidth = compactViewport && fullscreen
+        ? desktop.clientWidth - 20
+        : Math.min(desktop.clientWidth * 0.8, desktop.clientWidth - dockWidth - 30)
       const width = Math.min(440, availableWidth, (desktop.clientHeight - verticalClearance) * (100 / 177))
-      preview.style.width = `${Math.max(compactViewport ? 240 : 280, width)}px`
-      const previewWidth = Number.parseFloat(window.getComputedStyle(preview).width)
+      const previewWidth = Math.max(1, width)
+      preview.style.width = `${previewWidth}px`
       preview.style.setProperty('--floatem-app-scale', String(previewWidth / 400))
       shellRef.current?.style.setProperty('--floatem-preview-width', `${previewWidth}px`)
     }
